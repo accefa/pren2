@@ -1,0 +1,33 @@
+# latex build files
+*.aux
+*.log
+*.toc
+*.bbl
+*.blg
+*.lof
+*.out
+*.synctex.gz
+*.nav
+*.snm
+
+# latex pdf output
+tex/*/Team_39_*.pdf
+
+# temporary files
+*.swp
+
+# Microsoft Crap 
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+*.lnk
+
+# Videos
+vid/
+*.avi
+*.mp4
