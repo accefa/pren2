@@ -1,0 +1,51 @@
+\section{Arbeitsprozess}
+
+Mit den beschriebenen Intrumenten für das Projektmanagment, welche durch
+GitHub zur Verfügung gestellt werden und dem Modell des kollaborativen
+Projektmanagements hat sich ein Arbeitsprozess etabliert. Dieser Prozess,
+wie in der Abbildung \ref{fig:process} dargestellt, ist im wesentlichen ein
+Arbeitspaket-Regler.
+
+\begin{figure}[h!]
+	\centering
+	\begin{tikzpicture}[node distance=2.85cm, scale=0.75, transform shape]
+		\footnotesize
+		\node (m) [flowchart-block] {define Milestone};
+		\node (i) [flowchart-block, right of=m] {define Issue};
+		\node (a) [flowchart-block, right of=i] {(re)assign Member};
+		\node (ov) [flowchart-decision, below right of=a] {Assignee overload?};
+		\node (si) [flowchart-block, right of=ov] {solve Issue};
+		\node (is) [flowchart-decision, below of=si] {Issue solved?};
+		\node (ci) [flowchart-block, right of=is] {close Issue};
+		\node (np) [flowchart-decision, below of=i] {new problem?};
+		\draw[blue, thick, ->] (m) -- (i);
+		\draw[blue, thick, ->] (i) -- (a);
+		\draw[blue, thick, ->] (a) -| (ov);
+		\draw[blue, thick, ->] (ov) -| node[anchor=south, near start] {yes} (a);
+		\draw[blue, thick, ->] (ov) -- node[anchor=south, near start] {no} (si);
+		\draw[blue, thick, ->] (si) -- (is);
+		\draw[blue, thick, ->] (is) -- node[anchor=south, near start] {yes} (ci);
+		\draw[blue, thick, ->] (is) -| node[anchor=south, near start] {no} (np);
+		\draw[blue, thick, ->] (np) -| node[anchor=south, near start] {no} (a);
+		\draw[blue, thick, ->] (np) -- node[anchor=west, near start] {yes} (i);
+	\end{tikzpicture}
+	\caption{Etablierter Arbeitsprozess mit den Werkzeugen von GitHub}
+	\label{fig:process}
+\end{figure}
+
+Als Startpunkt werden gemeinsam Meilensteine für das Projekt festgelegt. Dies
+erfolgt in Anwesenheit und mit der Teilnahme alle Projektteilnehmer. Darauf
+folgend werden zentrale Arbeitspakete definiert und intuitiv zugeteilt an
+entprechende Fachpersonen. In einem nächsten Schritt wird eine
+Auslastungskontrolle durchgeführt, in welcher kontrolliert wird, ob eine
+ungünstige Verteilung der Aufgaben vorliegt. Eine solche Unausgewogenheit
+wird direkt an dieser Stelle versucht zu eliminieren. Ab diesem Zeitpunkt
+beginnt die dezentrale Regelung statt, in welcher ein Teilnehmer selber
+entscheiden muss, wie er der weitere Verlauf ist. Kann ein \gls{Issue} nicht
+geschlossen werden, so muss der Verantwortliche dieses neu Zuweisen (möglichst
+mit einem \gls{Comment} welcher diese Entscheidung dokumentiert) oder ein
+neues \gls{Issue} definieren.
+
+Dieser Prozess wird wöchentlich neu organisiert. D.h. der Status der
+Meilsensteine wird wöchentlich kontrolliert und allfällige Probleme werden,
+falls nicht schon vorher, mindestens im Wochentekt erkannt. 
