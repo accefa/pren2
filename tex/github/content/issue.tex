@@ -42,9 +42,9 @@ und kein Ende seiner Lebenszeit.
 		\node (start) [flowchart-block] {issue is created};
 		\node (open) [flowchart-block, right of=start] {issue is open};
 		\node (closed) [flowchart-block, right of=open] {issue is closed};
-		\draw[->, thick, blue] (start) -- (open);
-		\draw[->, thick, blue] (open) -- (closed);
-		\draw[->, thick, blue] (closed) -- ++(2,0) -| ++(0,-2) -| (open);
+		\draw[->, thick, blue] (start) -- node[anchor=south] {open} (open);
+		\draw[->, thick, blue] (open) -- node[anchor=south] {close} (closed);
+		\draw[->, thick, blue] (closed) -- ++(2,0) -| node[anchor=south] {reopen} ++(0,-2) -| (open);
 		\draw[->, thick, dotted, red] (closed) ++(2,0) -- ++(2,0) node[anchor=west] {issue at end of life};
 	\end{tikzpicture}
 	\caption{Lebenszyklus eines issue}
@@ -101,8 +101,11 @@ dargestellt ist. Bei diesem Beispiel ist ein \gls{Issue} erstellt worden ohne
 die Angabe eines \gls{Assignee} und \gls{Label}. An genau solch einem
 suboptimalen Fall für das Projektmanagement soll gezeigt werden, wie die
 Intrumente von GitHub helfen den erfolgreichen Projektfluss aufrecht zu
-erhalten. Hierzu ist in der Abbildung \ref{fig:comment} der Ausschnitt aus der
+erhalten. 
+\begin{comment}
+Hierzu ist in der Abbildung \ref{fig:comment} der Ausschnitt aus der
 Anfangsphase solch eines \gls{Issue} dargestellt.
+\end{comment}
 
 \begin{figure}[h!]
 	\centering
@@ -110,3 +113,12 @@ Anfangsphase solch eines \gls{Issue} dargestellt.
 	\caption{Auschschnitt aus der Historie eines Issues}
 	\label{fig:comment}
 \end{figure}
+
+Im gezeigten Beispiel aus der Abbildung \ref{fig:comment} ist zu erkennen,
+dass das \gls{Issue} zunächst einem Meilenstein zugewiesen wird
+(\emph{Freigabe Gesamtkonzept, Projektdokumentation (80\%)}). Danach findet
+eine Diskussion statt zur klärung inhaltlicher Fragen zum \gls{Issue}. Diese
+führt dann dazu, dass ein Projektteilnehmer zum \gls{Assignee} wird. Dieser
+setzt im Anschluss noch ein \gls{Label}. Der daraus resultierende Verlauf ist
+eine prägnante Dokumentation für alle Projektteilnehmer, welche sich
+jederzeit nachvollziehen lässt.
