@@ -9,6 +9,8 @@
 *.synctex.gz
 *.nav
 *.snm
+*.glo
+*.xdy
 
 # latex pdf output
 tex/*/Team_39_*.pdf
