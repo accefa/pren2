@@ -1,19 +1,112 @@
 \section{Testplan}
+Es wird zwischen Integrations- (INT) und Systemtest (SYS) unterschieden. Ein Integrationstest
+ist technisch getrieben und prüft das Zusammenspiel der Komponenten. Aus diesem
+Grund wird empfohlen, dass solche Tests von den Entwicklern selber durchgeführt werden.
+Systemtest hingegen sind benutzerorientiert. Diese testen das System als Ganzes.
+Die Tests sind voneinander abhängig, darum ist die Reihenfolge der Testausführung
+definiert. Denn ein Test kann als Vorbedingung für einen anderen Test gelten. 
 
-\subsection{Beispiel Testfall 1 Webserver starten}
+In den Tests wird von Controller und Configurator gesprochen. Der Controller ist
+das Raspberry Pi und der Configurator die externe Steuerungseinheit.
 
+\subsection{Reihenfolge der Testdurchführung}
+INT100, INT101, INT102
+
+\subsection{INT101 Webservice Erreichbarkeit}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular}{|r|p{14cm}|}
-		\hline Beschreibung & Der Webserver (web.py) muss starten und über einen Webbrowser erreichbar sein. \\ 
-		\hline Vorbedingungen & web.py Bibliothek im Python Path \\ 
-		\hline Testdaten & URL: http://localhost:8080 \\ 
+		\hline Beschreibung & Die Webservices auf dem Controller müssen erreichbar sein. \\ 
+		\hline Vorbedingungen & Controller Setup \\ 
+		\hline Testdaten & URL: http://<IP_ADDRESS_CONTROLLER>:<PORT_CONTROLLER> \\ 
 		\hline Vorgehen & 
 		\begin{enumerate}
-			\item Webserver über Konsole starten python web.py
-			\item Browser öffnen und URL eingeben
+			\item Browser öffnen und URL eingeben.
 		\end{enumerate} \\ 
 		\hline Ergebnis & Der Browser zeigt eine Willkommensseite an \\ 
+		\hline 
+	\end{tabular}
+\end{table}
+
+\subsection{INT102 Webservice Bild laden}
+\begin{table}[h!]
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{|r|p{14cm}|}
+		\hline Beschreibung & Der Bild-Lade Webservice muss ein Bild zurückliefern. \\ 
+		\hline Vorbedingungen & INT101 \\ 
+		\hline Testdaten & URL: http://<IP_ADDRESS_CONTROLLER>:<PORT_CONTROLLER>/image \\ 
+		\hline Vorgehen & 
+		\begin{enumerate}
+			\item Browser öffnen und URL eingeben
+		\end{enumerate} \\ 
+		\hline Ergebnis & Ein Bild wird angezeigt. \\ 
+		\hline 
+	\end{tabular}
+\end{table}
+
+\subsection{INT103 Webservice Kamera Konfig laden}
+\begin{table}[h!]
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{|r|p{14cm}|}
+		\hline Beschreibung & Der Kamera-Konfig-Lade Webservice muss ein JSON-File mit den aktuellen Einstellungen liefern. \\ 
+		\hline Vorbedingungen & INT102 \\ 
+		\hline Testdaten & URL: http://<IP_ADDRESS_CONTROLLER>:<PORT_CONTROLLER>/camera \\ 
+		\hline Vorgehen & 
+		\begin{enumerate}
+			\item Browser öffnen und URL eingeben
+		\end{enumerate} \\ 
+		\hline Ergebnis & JSON-File mit aktuellen Einstellungen ist ersichtlich. \\ 
+		\hline 
+	\end{tabular}
+\end{table}
+
+\subsection{SYS101 Configurator startet}
+\begin{table}[h!]
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{|r|p{14cm}|}
+		\hline Beschreibung & Der Configurator lässt sich starten. \\ 
+		\hline Vorbedingungen & Configurator Setup \\ 
+		\hline Testdaten &  \\ 
+		\hline Vorgehen & 
+		\begin{enumerate}
+			\item Configurator starten
+		\end{enumerate} \\ 
+		\hline Ergebnis & Es erscheint eine Benutzeroberfläche. \\ 
+		\hline 
+	\end{tabular}
+\end{table}
+
+\subsection{SYS102 Configurator Verbindungseinstellungen }
+\begin{table}[h!]
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{|r|p{14cm}|}
+		\hline Beschreibung & Im Configurator lassen sich die Verbindungseinstellungen zum Controller ändern. \\ 
+		\hline Vorbedingungen & SYS101 \\ 
+		\hline Testdaten & Eigene Verbindungsdaten definieren \\ 
+		\hline Vorgehen & 
+		\begin{enumerate}
+			\item Configurator starten
+			\item Verbindungeinstellungen ändern und speichern
+			\item Configurator neu starten
+		\end{enumerate} \\ 
+		\hline Ergebnis & Verbindungseinstellungen sind auch nach dem Neustart erhalten. \\ 
+		\hline 
+	\end{tabular}
+\end{table}
+
+\subsection{SYS103 Configurator Bild laden }
+\begin{table}[h!]
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{|r|p{14cm}|}
+		\hline Beschreibung & Aktuelle Foto lässt sich laden und im Configurator anzeigen. \\ 
+		\hline Vorbedingungen & SYS102 \\ 
+		\hline Testdaten & Verbindungsdaten definieren, Bild \\ 
+		\hline Vorgehen & 
+		\begin{enumerate}
+			\item Configurator starten
+			\item Bild laden
+		\end{enumerate} \\ 
+		\hline Ergebnis & Aktuelles Foto erscheint im GUI. \\ 
 		\hline 
 	\end{tabular}
 \end{table}
