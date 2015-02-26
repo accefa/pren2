@@ -12,7 +12,7 @@ Das Repository ist straff organisert.
 | `tex`       | LaTeX Sourcen |
 
 ## Planung
-Die Planung ist in einem [interaktiven SVG](./fig/milestones.svg) dargestellt.
+Die Planung ist in einem [interaktiven SVG](./fig/github/milestones.svg) dargestellt.
 
 ## Quicklinks
 * [Issues](https://github.com/accefa/pren2/issues)
