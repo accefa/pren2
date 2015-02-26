@@ -10,7 +10,8 @@ In den Tests wird von Controller und Configurator gesprochen. Der Controller ist
 das Raspberry Pi und der Configurator die externe Steuerungseinheit.
 
 \subsection{Reihenfolge der Testdurchführung}
-INT100, INT101, INT102
+INT101, INT102, INT103
+SYS101, SYS102, SYS103
 
 \subsection{INT101 Webservice Erreichbarkeit}
 \begin{table}[h!]
@@ -107,6 +108,24 @@ INT100, INT101, INT102
 			\item Bild laden
 		\end{enumerate} \\ 
 		\hline Ergebnis & Aktuelles Foto erscheint im GUI. \\ 
+		\hline 
+	\end{tabular}
+\end{table}
+
+\subsection{SYS104 Configurator Konfiguration anwenden }
+\begin{table}[h!]
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{|r|p{14cm}|}
+		\hline Beschreibung & Die Kamera-Einstellungen lassen sich editieren und auf den Controller anwenden. \\ 
+		\hline Vorbedingungen & SYS103 \\ 
+		\hline Testdaten & Konfigurationsdaten \\ 
+		\hline Vorgehen & 
+		\begin{enumerate}
+			\item Configurator starten
+			\item Kamera-Einstellunge editieren
+			\item Kamera-Einstellung speichern
+		\end{enumerate} \\ 
+		\hline Ergebnis & Auf dem GUI erscheint die Meldung, dass die Konfiguration erfolgreich gespeichert wurde. \\ 
 		\hline 
 	\end{tabular}
 \end{table}
