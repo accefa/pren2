@@ -450,12 +450,20 @@
          id="path4138-9-9-5-1-8"
          style="opacity:1;fill:#89a5ff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
     </a>
-    <circle
-       style="opacity:1;fill:#ff6a43;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="path4138-9"
-       cx="70.866142"
-       cy="981.49603"
-       r="7.0866141" />
+    <a
+       id="a4750"
+       xlink:href="https://github.com/accefa/pren2/milestones/Offiziell:%20Detailplanung%20f%C3%BCr%20die%20Entwurfs%20und%20Realisierungsphase"
+       xlink:type="simple"
+       xlink:title="Offiziell: Detailplanung für die Entwurfs und Realisierungsphase"
+       xlink:show="Offiziell: Detailplanung für die Entwurfs und Realisierungsphase"
+       xlink:actuate="onRequest">
+      <circle
+         r="7.0866141"
+         cy="981.49603"
+         cx="70.866142"
+         id="path4138-9"
+         style="opacity:1;fill:#ff6a43;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    </a>
     <a
        id="a4725"
        xlink:title="Start PREN2 - 16. Februar 2015"
