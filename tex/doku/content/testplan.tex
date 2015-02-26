@@ -1,0 +1,19 @@
+\section{Testplan}
+
+\subsection{Beispiel Testfall 1 Webserver starten}
+
+\begin{table}[h!]
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{|r|p{14cm}|}
+		\hline Beschreibung & Der Webserver (web.py) muss starten und über einen Webbrowser erreichbar sein. \\ 
+		\hline Vorbedingungen & web.py Bibliothek im Python Path \\ 
+		\hline Testdaten & URL: http://localhost:8080 \\ 
+		\hline Vorgehen & 
+		\begin{enumerate}
+			\item Webserver über Konsole starten python web.py
+			\item Browser öffnen und URL eingeben
+		\end{enumerate} \\ 
+		\hline Ergebnis & Der Browser zeigt eine Willkommensseite an \\ 
+		\hline 
+	\end{tabular}
+\end{table}
