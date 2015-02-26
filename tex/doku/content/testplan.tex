@@ -61,6 +61,27 @@ SYS101, SYS102, SYS103
 	\end{tabular}
 \end{table}
 
+\subsection{INT104 Webservice Kamera Konfig speichern}
+\begin{table}[h!]
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{|r|p{14cm}|}
+		\hline Beschreibung & Der Kamera-Konfig-Speicher Webservice muss ein JSON-File entgegennehmen und die Einstellungen speichern. \\ 
+		\hline Vorbedingungen & INT103 \\ 
+		\hline Testdaten & URL: http://<IP_ADDRESS_CONTROLLER>:<PORT_CONTROLLER>/camera \\ 
+		\hline Vorgehen & 
+		\begin{enumerate}
+			\item Aktuelle Controller Einstellungen laden.
+			\item Einstellungen in ein JSON-File speichern.
+			\item Ein paar Werte anpassen.
+			\item PUT Request an die URL senden mit dem JSON-File.
+			\item Controller neu starten
+			\item Aktuelle Controller Einstellungen laden.
+		\end{enumerate} \\ 
+		\hline Ergebnis & Die Einstellungen müssen nun die gleichen sein wie vor dem Neustart. \\ 
+		\hline 
+	\end{tabular}
+\end{table}
+
 \subsection{SYS101 Configurator startet}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
@@ -107,7 +128,7 @@ SYS101, SYS102, SYS103
 			\item Configurator starten
 			\item Bild laden
 		\end{enumerate} \\ 
-		\hline Ergebnis & Aktuelles Foto erscheint im GUI. \\ 
+		\hline Ergebnis & Aktuelles Foto erscheint im GUI. Auf dem Bild muss der Korb markiert sein und der Winkel angegeben. \\ 
 		\hline 
 	\end{tabular}
 \end{table}
@@ -124,8 +145,10 @@ SYS101, SYS102, SYS103
 			\item Configurator starten
 			\item Kamera-Einstellunge editieren
 			\item Kamera-Einstellung speichern
+			\item Bild neu laden
 		\end{enumerate} \\ 
-		\hline Ergebnis & Auf dem GUI erscheint die Meldung, dass die Konfiguration erfolgreich gespeichert wurde. \\ 
+		\hline Ergebnis & Auf dem GUI erscheint die Meldung, dass die Konfiguration erfolgreich gespeichert wurde.
+		Ausserdem erscheint das Bild, welches mit den aktuellen Einstellungen modifiziert wurden. \\ 
 		\hline 
 	\end{tabular}
 \end{table}
