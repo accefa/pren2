@@ -1,3 +1,136 @@
 \section{Schnittstellen}
 
 \section{REST von Webserver}
+
+Die Schnittstelle von der externen Steuereinheit zum Raspberry Pi wird über eine REST\footnote{Representational State Transfer}-Schnittstelle realisiert. Es wurden folgende Ressourcen definiert:
+\begin{itemize}
+	\item camera
+	\item image
+	\item start
+\end{itemize}
+Jede Ressource lässt sich mit HTML-Methoden (GET, PUT, POST usw.) abrufen oder verändern. Die Schnittstelle lässt sich ohne Authentifizierung nutzen und arbeiten mit dem JSON-Datenformat. Nachfolgend werden die einzelnen Ressourcen näher beschrieben.
+
+\subsection{GET camera}
+
+Diese Anfrage liefert die aktuellen Einstellungen der Bilderkennung zurück.
+
+\subsubsection{Parameter}
+
+\begin{tabular}{l p{16cm}}
+	\textbf{config} & Die Konfiguration der Bilderkennung \\
+	\textbf{roi} & Ist der Bereich in dem der Korb erkennbar ist (Region of Interest). Er ist definiert durch die Koordinaten der linken oberen Ecke (x,y) und einer Fläche (height, width). \\
+	\textbf{contrast} & Ein Wert zwischen -100 und 100 für den Kontrast der Kamera. \\
+	\textbf{greyscale} & \texttt{true} wenn ein Graustufen-Bild erzeugt werden soll. \\
+	\textbf{quality} & Ein Wert zwischen 0 und 100 für die Qualität des JPEG-Bildes. \\
+	\textbf{line} & Die Pixellinie welche analysiert werden soll um den Korb zu detektieren. \\
+	\textbf{height} & Auf welcher Höhe soll die Pixellinie analysiert werden. Darf max. so hoch sein wie die ROI. \\
+	\textbf{area} & Bei der Detektierung wird nicht nur eine Pixellinie untersucht. Mit \texttt{area} kann ein Band definiert werden in dem die Linien analysiert werden. \\
+	\textbf{image} & Der URL zum Bild der Kamera. Bei jedem Aufruf wird ein neues Bild erstellt.
+\end{tabular}
+
+\subsubsection{Beispiel Request}
+
+\texttt{GET} \\
+\texttt{http://<raspberrypi-ip>/camera}
+
+\subsubsection{Beispiel Result}
+
+\begin{lstlisting}[caption=GET camera Result, label=lst:camera, tabsize=2]
+{
+	"config": {
+		"roi": {
+			"x": 100,
+			"y": 200,
+			"height": 300,
+			"width": 400
+		},
+		"contrast": 50,
+		"greyscale": true,
+		"quality": 100,
+		"line": {
+			"height": 300,
+			"area": 5
+		}
+	},
+	"image": "http://<raspberrypi-ip>/image"
+}
+\end{lstlisting}
+
+\subsection{PUT camera}
+
+Diese Anfrage verändert die Einstellungen der Bilderkennung.
+
+\subsubsection{Beispiel Request}
+
+\texttt{PUT} \\
+\texttt{http://<raspberrypi-ip>/camera} \\
+Body siehe Listing \ref{lst:camera}
+
+\subsubsection{Beispiel Result}
+
+\begin{lstlisting}[caption=PUT camera Result, tabsize=2]
+{
+	"status": true
+}
+\end{lstlisting}
+
+\subsection{GET image}
+
+Diese Anfrage liefert das Bild der Kamera zurück. Bei jeder Anfrage wird ein Bild erstellt.
+
+\subsubsection{Beispiel Request}
+
+\texttt{GET} \\
+\texttt{http://<raspberrypi-ip>/image}
+
+\subsubsection{Beispiel Result}
+
+Bild im JPEG-Format
+
+\subsection{GET start}
+
+Diese Anfrage liefert den Status des Vorgangs zurück. Wenn \texttt{start} auf \texttt{true} gesetzt ist läuft der Vorgang.
+
+\subsubsection{Beispiel Request}
+
+\texttt{GET} \\
+\texttt{http://<raspberrypi-ip>/start}
+
+\subsubsection{Beispiel Result}
+
+\begin{lstlisting}[caption=GET start Result, tabsize=2]
+{
+	"start": true
+}
+\end{lstlisting}
+
+\subsection{PUT start}
+
+Diese Anfrage startet den Vorgang und übergibt die Callback-Adresse vom Steuergerät, damit der Stopp-Befehl zurück gesendet werden kann.
+
+\subsubsection{Parameter}
+
+\begin{tabular}{l p{16cm}}
+	\textbf{start} & Bei \texttt{true} wird der Vorgang gestartet. Der Vorgang wird nicht unterbrochen falls \texttt{start} auf \texttt{false} gesetzt wird. Ist der Vorgang beendet wird \texttt{start} auf \texttt{false} gesetzt \\
+	\textbf{url} & Die IP-Adresse des Steuergerätes. Diese wird benötigt um den Stopp-Befehl zurückzusenden.
+\end{tabular}
+
+\subsubsection{Beispiel Request}
+
+\texttt{PUT} \\
+\texttt{http://<raspberrypi-ip>/start}
+
+\begin{lstlisting}[caption=PUT start Request, tabsize=2]
+{
+	"start": true,
+	"url": "http://<steuergerät-ip>"
+}
+\end{lstlisting}
+
+\subsubsection{Beispiel Result}
+
+\begin{lstlisting}[caption=PUT start Result, tabsize=2]
+{
+	"status": true
+}
+\end{lstlisting}
