@@ -8,7 +8,7 @@ Das Repository ist straff organisert.
 |:------------|:--------------|
 | README.md   | Kruzbeschrieb (auch in jedem Unterverzeichnis vorhanden)
 | .gitignore  | Globale `ignore`-Konfiguration (auch in einigen Unterverzeichnissen)
-| `fig`       | Grfaiken      |
+| `fig`       | Grafiken      |
 | `tex`       | LaTeX Sourcen |
 
 ## Planung
