@@ -69,6 +69,13 @@ Body siehe Listing \ref{lst:camera}
 \subsubsection{Beispiel Result}
 
 \texttt{HTTP/1.1 200 OK} \\
+\texttt{Content-Type: text/json} \\
+
+\noindent
+Wenn kein valides JSON übergeben wurde: \\
+
+\noindent
+\texttt{HTTP/1.1 406 NOT ACCEPTABLE} \\
 \texttt{Content-Type: text/json}
 
 \subsection{GET image}
