@@ -17,15 +17,15 @@ Diese Anfrage liefert die aktuellen Einstellungen der Bilderkennung zurück.
 \subsubsection{Parameter}
 
 \begin{tabular}{l p{16cm}}
-	\textbf{config} & Die Konfiguration der Bilderkennung \\
-	\textbf{roi} & Ist der Bereich in dem der Korb erkennbar ist (Region of Interest). Er ist definiert durch die Koordinaten der linken oberen Ecke (x,y) und einer Fläche (height, width). \\
-	\textbf{contrast} & Ein Wert zwischen -100 und 100 für den Kontrast der Kamera. \\
-	\textbf{greyscale} & \texttt{true} wenn ein Graustufen-Bild erzeugt werden soll. \\
-	\textbf{quality} & Ein Wert zwischen 0 und 100 für die Qualität des JPEG-Bildes. \\
-	\textbf{line} & Die Pixellinie welche analysiert werden soll um den Korb zu detektieren. \\
-	\textbf{height} & Auf welcher Höhe soll die Pixellinie analysiert werden. Darf max. so hoch sein wie die ROI. \\
-	\textbf{area} & Bei der Detektierung wird nicht nur eine Pixellinie untersucht. Mit \texttt{area} kann ein Band definiert werden in dem die Linien analysiert werden. \\
-	\textbf{image} & Der URL zum Bild der Kamera. Bei jedem Aufruf wird ein neues Bild erstellt.
+	\texttt{config} & Die Konfiguration der Bilderkennung \\
+	\texttt{line\_y} & Die Pixellinie welche analysiert werden soll um den Korb zu detektieren. \\
+	\texttt{line\_h} & Bei der Detektierung wird nicht nur eine Pixellinie untersucht. Mit \texttt{area} kann ein Band definiert werden in dem die Linien analysiert werden. \\
+	\texttt{greyscale\_threshold} & Schwellenwert der Objekterkennung. \\
+	\texttt{greyscale} & \texttt{true} wenn ein Graustufen-Bild erzeugt werden soll. \\
+	\texttt{quality} & Ein Wert zwischen 0 und 100 für die Qualität des JPEG-Bildes. \\
+	\texttt{crop\_x} & Breite des Feldes das auf beiden Seiten des Bildes abgeschnitten wird. \\
+	\texttt{contrast} & Ein Wert zwischen -100 und 100 für den Kontrast der Kamera. \\
+	\texttt{image} & Der URL zum Bild der Kamera. Bei jedem Aufruf wird ein neues Bild erstellt.
 \end{tabular}
 
 \subsubsection{Beispiel Request}
@@ -38,21 +38,15 @@ Diese Anfrage liefert die aktuellen Einstellungen der Bilderkennung zurück.
 \begin{lstlisting}[caption=GET camera Result, label=lst:camera, tabsize=2]
 {
 	"config": {
-		"roi": {
-			"x": 100,
-			"y": 200,
-			"height": 300,
-			"width": 400
-		},
-		"contrast": 50,
-		"greyscale": true,
-		"quality": 100,
-		"line": {
-			"height": 300,
-			"area": 5
-		}
+		"line_y": 0, 
+		"line_h": 1, 
+		"greyscale_threshold": 0,
+		"greyscale": true, 
+		"quality": 90, 
+		"crop_x": 0, 
+		"contrast": 10, 
 	},
-	"image": "http://<raspberrypi-ip>/image"
+	"image": "http://<raspberrypi-ip>/image/basket.jpeg"
 }
 \end{lstlisting}
 
