@@ -1,4 +1,13 @@
 \section{Testplan}
+
+\subsection{Systemtest}
+
+\subsection{Testplan-Maschinebau}
+
+\subsection{Testplan-Elektrotechnik}
+
+\subsection{Testplan-Informatik}
+
 Es wird zwischen Integrations- (INT) und Systemtest (SYS) unterschieden. Ein Integrationstest
 ist technisch getrieben und prüft das Zusammenspiel der Komponenten. Aus diesem
 Grund wird empfohlen, dass solche Tests von den Entwicklern selber durchgeführt werden.
@@ -9,11 +18,11 @@ definiert. Denn ein Test kann als Vorbedingung für einen anderen Test gelten.
 In den Tests wird von Controller und Configurator gesprochen. Der Controller ist
 das Raspberry Pi und der Configurator die externe Steuerungseinheit.
 
-\subsection{Reihenfolge der Testdurchführung}
+\subsubsection{Reihenfolge der Testdurchführung}
 INT101, INT102, INT103, INT104
 SYS101, SYS102, SYS103, SYS104
 
-\subsection{Ablaufplan}
+\subsubsection{Ablaufplan}
 \begin{figure}
 \centering
 \includegraphics[width=0.7\linewidth]{../../fig/ablauf-ballwurf}
@@ -22,7 +31,7 @@ SYS101, SYS102, SYS103, SYS104
 \end{figure}
 
 
-\subsection{INT101 Webservice Erreichbarkeit}
+\subsubsection{INT101 Webservice Erreichbarkeit}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular}{|r|p{14cm}|}
@@ -38,7 +47,7 @@ SYS101, SYS102, SYS103, SYS104
 	\end{tabular}
 \end{table}
 
-\subsection{INT102 Webservice Bild laden}
+\subsubsection{INT102 Webservice Bild laden}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular}{|r|p{14cm}|}
@@ -54,7 +63,7 @@ SYS101, SYS102, SYS103, SYS104
 	\end{tabular}
 \end{table}
 
-\subsection{INT103 Webservice Kamera Konfig laden}
+\subsubsection{INT103 Webservice Kamera Konfig laden}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular}{|r|p{14cm}|}
@@ -70,7 +79,7 @@ SYS101, SYS102, SYS103, SYS104
 	\end{tabular}
 \end{table}
 
-\subsection{INT104 Webservice Kamera Konfig speichern}
+\subsubsection{INT104 Webservice Kamera Konfig speichern}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular}{|r|p{14cm}|}
@@ -91,7 +100,7 @@ SYS101, SYS102, SYS103, SYS104
 	\end{tabular}
 \end{table}
 
-\subsection{SYS101 Configurator startet}
+\subsubsection{SYS101 Configurator startet}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular}{|r|p{14cm}|}
@@ -107,7 +116,7 @@ SYS101, SYS102, SYS103, SYS104
 	\end{tabular}
 \end{table}
 
-\subsection{SYS102 Configurator Verbindungseinstellungen }
+\subsubsection{SYS102 Configurator Verbindungseinstellungen }
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular}{|r|p{14cm}|}
@@ -125,7 +134,7 @@ SYS101, SYS102, SYS103, SYS104
 	\end{tabular}
 \end{table}
 
-\subsection{SYS103 Configurator Bild laden }
+\subsubsection{SYS103 Configurator Bild laden }
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular}{|r|p{14cm}|}
