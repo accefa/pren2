@@ -1,5 +1,17 @@
 \section{Testplan}
 
+\subsection{Einführung}
+
+Der Testplan
+
+\subsubsection{Ablaufplan}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{../../fig/ablauf-ballwurf}
+	\caption{}
+	\label{fig:ablauf-ballwurf}
+\end{figure}
+
 \subsection{Systemtest}
 
 \subsection{Testplan-Maschinebau}
@@ -105,18 +117,14 @@ definiert. Denn ein Test kann als Vorbedingung für einen anderen Test gelten.
 
 In den Tests wird von Controller und Configurator gesprochen. Der Controller ist
 das Raspberry Pi und der Configurator die externe Steuerungseinheit.
+Die Motoren sind als BLDC, DC und STP abgekürzt.
+BLDC ist der Motor für das Schwungrad, DC für den Ballvorschub und STP zum Drehen der Plattform.
 
 \subsubsection{Reihenfolge der Testdurchführung}
 INT101, INT102, INT103, INT104
-SYS101, SYS102, SYS103, SYS104
+SYS101, SYS102, SYS103, SYS104, SYS105, SYS106, SYS107
 
-\subsubsection{Ablaufplan}
-\begin{figure}
-\centering
-\includegraphics[width=0.7\linewidth]{../../fig/ablauf-ballwurf}
-\caption{}
-\label{fig:ablauf-ballwurf}
-\end{figure}
+
 
 
 \subsubsection{INT101 Webservice Erreichbarkeit}
@@ -239,7 +247,7 @@ SYS101, SYS102, SYS103, SYS104
 	\end{tabular}
 \end{table}
 
-\subsection{SYS104 Configurator Konfiguration anwenden }
+\subsubsection{SYS104 Configurator Bild Konfiguration anwenden }
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular}{|r|p{14cm}|}
@@ -255,6 +263,65 @@ SYS101, SYS102, SYS103, SYS104
 		\end{enumerate} \\ 
 		\hline Ergebnis & Auf dem GUI erscheint die Meldung, dass die Konfiguration erfolgreich gespeichert wurde.
 		Ausserdem erscheint das Bild, welches mit den aktuellen Einstellungen modifiziert wurden. \\ 
+		\hline 
+	\end{tabular}
+\end{table}
+
+\subsubsection{SYS105 BLDC ansteuern}
+\begin{table}[h!]
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{|r|p{14cm}|}
+		\hline Beschreibung & Der BLDC Motor lässt sich via GUI ansteuern. \\ 
+		\hline Vorbedingungen & SYS102 \\ 
+		\hline Testdaten & Konfigurationsdaten \\ 
+		\hline Vorgehen & 
+		\begin{enumerate}
+			\item Configurator starten
+			\item RPM anpassen
+			\item Motor starten
+			\item Motor stoppen
+			\item Motor reset
+		\end{enumerate} \\ 
+		\hline Ergebnis & Der Motor wird sich in der entsprechenden Geschwindigkeit drehen. \\ 
+		\hline 
+	\end{tabular}
+\end{table}
+
+\subsubsection{SYS106 DC ansteuern }
+\begin{table}[h!]
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{|r|p{14cm}|}
+		\hline Beschreibung & Der DC Motor lässt sich via GUI ansteuern. \\ 
+		\hline Vorbedingungen & SYS102 \\ 
+		\hline Testdaten & Konfigurationsdaten \\ 
+		\hline Vorgehen & 
+		\begin{enumerate}
+			\item Configurator starten
+			\item Motor starten
+			\item Motor stoppen
+			\item Motor reset
+		\end{enumerate} \\ 
+		\hline Ergebnis & Der Motor wird sich drehen. Zusätzlich nimmt er seine Ausgangsposition beim Reset an.\\ 
+		\hline 
+	\end{tabular}
+\end{table}
+
+\subsubsection{SYS107 STP ansteuern}
+\begin{table}[h!]
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{|r|p{14cm}|}
+		\hline Beschreibung & Der DC Motor lässt sich via GUI ansteuern. \\ 
+		\hline Vorbedingungen & SYS102 \\ 
+		\hline Testdaten & Konfigurationsdaten \\ 
+		\hline Vorgehen & 
+		\begin{enumerate}
+			\item Configurator starten
+			\item Schritte anpassen
+			\item Motor starten
+			\item Motor stoppen
+			\item Motor reset
+		\end{enumerate} \\ 
+		\hline Ergebnis & Der Motor wird sich um die entsprechende Anzahl Schritte drehen. Zusätzlich nimmt er seine Ausgangsposition beim Reset an. \\ 
 		\hline 
 	\end{tabular}
 \end{table}
