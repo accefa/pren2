@@ -14,162 +14,147 @@ Der Testplan beschreibt alle wichtigen Testfälle und ihre erwarteten Resultate.
 
 \subsection{Gesamtsystemtest}
 
-\subsubsection{Ballwerfer ausgerichtet}
+\subsubsection{Reihenfolge der Testdurchführung}
+GST101, GST102, GST103, GST104, GST105, GST106, GST107, GST108
+
+\subsubsection{GST101 Ballwerfer ausgerichtet}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular}{|r|p{14cm}|}
-		\hline Beschreibung & Der DC Motor lässt sich via GUI ansteuern. \\ 
-		\hline Vorbedingungen & SYS102 \\ 
+		\hline Beschreibung & Ballwerfer ist mit der Schablone auf dem Spielfeld mittig ausgerichtet. \\ 
+		\hline Vorbedingungen &  \\ 
 		\hline Testdaten & Konfigurationsdaten \\ 
 		\hline Vorgehen & 
 		\begin{enumerate}
-			\item Configurator starten
-			\item Schritte anpassen
-			\item Motor starten
-			\item Motor stoppen
-			\item Motor reset
+			\item Schablone auflegen
+			\item Ballwerfer auf die Mitte stellen
+			\item Schablone entfernen
 		\end{enumerate} \\ 
-		\hline Ergebnis & Der Motor wird sich um die entsprechende Anzahl Schritte drehen. Zusätzlich nimmt er seine Ausgangsposition beim Reset an. \\ 
+		\hline Ergebnis & Der Ballwerfer steht in der Mitte des Spielfeld.s \\ 
 		\hline 
 	\end{tabular}
 \end{table}
 
-\subsubsection{Strom angeschlossen}
+\subsubsection{GST102 Strom angeschlossen}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular}{|r|p{14cm}|}
-		\hline Beschreibung & Der DC Motor lässt sich via GUI ansteuern. \\ 
-		\hline Vorbedingungen & SYS102 \\ 
+		\hline Beschreibung & Alle Komponenten sind am Strom angeschlossen. \\ 
+		\hline Vorbedingungen &  GST101\\ 
 		\hline Testdaten & Konfigurationsdaten \\ 
 		\hline Vorgehen & 
 		\begin{enumerate}
-			\item Configurator starten
-			\item Schritte anpassen
-			\item Motor starten
-			\item Motor stoppen
-			\item Motor reset
+			\item Netzteil am Strom anschliessen
+			\item Rasperry am Netzteil anschliessen
+			\item Freedom Board am Netzteil anschliessen
+			\item DC Motor am Netzteil anschliessen
+			\item BLDC Motor am Netzteil anschliessen
+			\item STP Motor am Netzteil anschliessen
 		\end{enumerate} \\ 
-		\hline Ergebnis & Der Motor wird sich um die entsprechende Anzahl Schritte drehen. Zusätzlich nimmt er seine Ausgangsposition beim Reset an. \\ 
+		\hline Ergebnis & Alle Komponenten sind am Strom angeschlossen und lassen sich in Betrieb nehmen. \\ 
 		\hline 
 	\end{tabular}
 \end{table}
 
-\subsubsection{Boards eingeschaltet}
+\subsubsection{GST103 Boards eingeschaltet}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular}{|r|p{14cm}|}
-		\hline Beschreibung & Der DC Motor lässt sich via GUI ansteuern. \\ 
-		\hline Vorbedingungen & SYS102 \\ 
+		\hline Beschreibung & Freedom Board und Rasperry einschalten. \\ 
+		\hline Vorbedingungen &  GST102\\ 
 		\hline Testdaten & Konfigurationsdaten \\ 
 		\hline Vorgehen & 
 		\begin{enumerate}
-			\item Configurator starten
-			\item Schritte anpassen
-			\item Motor starten
-			\item Motor stoppen
-			\item Motor reset
+			\item Freedom Board einschalten
+			\item Rasperry einschalten
 		\end{enumerate} \\ 
-		\hline Ergebnis & Der Motor wird sich um die entsprechende Anzahl Schritte drehen. Zusätzlich nimmt er seine Ausgangsposition beim Reset an. \\ 
+		\hline Ergebnis & Freedom Board und Rasperry sind in Betrieb. \\ 
 		\hline 
 	\end{tabular}
 \end{table}
 
-\subsubsection{Verbindung aufgebaut}
+\subsubsection{GST104 Verbindung aufgebaut}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular}{|r|p{14cm}|}
-		\hline Beschreibung & Der DC Motor lässt sich via GUI ansteuern. \\ 
-		\hline Vorbedingungen & SYS102 \\ 
+		\hline Beschreibung & Computer ist mit dem Rasperry WLAN verbunden. \\ 
+		\hline Vorbedingungen &  GST103\\ 
 		\hline Testdaten & Konfigurationsdaten \\ 
 		\hline Vorgehen & 
 		\begin{enumerate}
-			\item Configurator starten
-			\item Schritte anpassen
-			\item Motor starten
-			\item Motor stoppen
-			\item Motor reset
+			\item Computer einschalten
+			\item WLAN verbinden
+			\item WLAN Login
 		\end{enumerate} \\ 
-		\hline Ergebnis & Der Motor wird sich um die entsprechende Anzahl Schritte drehen. Zusätzlich nimmt er seine Ausgangsposition beim Reset an. \\ 
+		\hline Ergebnis & Computer ist mit dem Rasperry WLAN verbunden. \\ 
 		\hline 
 	\end{tabular}
 \end{table}
 
-\subsubsection{GUI geöffnet}
+\subsubsection{GST105 GUI geöffnet}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular}{|r|p{14cm}|}
-		\hline Beschreibung & Der DC Motor lässt sich via GUI ansteuern. \\ 
-		\hline Vorbedingungen & SYS102 \\ 
+		\hline Beschreibung & Der Configurator lässt sich auf dem Computer öffnen. \\ 
+		\hline Vorbedingungen &  GST104\\ 
 		\hline Testdaten & Konfigurationsdaten \\ 
 		\hline Vorgehen & 
 		\begin{enumerate}
 			\item Configurator starten
-			\item Schritte anpassen
-			\item Motor starten
-			\item Motor stoppen
-			\item Motor reset
 		\end{enumerate} \\ 
-		\hline Ergebnis & Der Motor wird sich um die entsprechende Anzahl Schritte drehen. Zusätzlich nimmt er seine Ausgangsposition beim Reset an. \\ 
+		\hline Ergebnis & Der Configurator ist geöffnet und lässt sich bedienen. \\ 
 		\hline 
 	\end{tabular}
 \end{table}
 
-\subsubsection{Reset Motoren}
+\subsubsection{GST106 Reset Motoren}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular}{|r|p{14cm}|}
-		\hline Beschreibung & Der DC Motor lässt sich via GUI ansteuern. \\ 
-		\hline Vorbedingungen & SYS102 \\ 
+		\hline Beschreibung & Alle Motoren haben einen Reset durchgeführt. \\ 
+		\hline Vorbedingungen &  GST105\\ 
 		\hline Testdaten & Konfigurationsdaten \\ 
 		\hline Vorgehen & 
 		\begin{enumerate}
-			\item Configurator starten
-			\item Schritte anpassen
-			\item Motor starten
-			\item Motor stoppen
-			\item Motor reset
+			\item GUI Tab wechseln
+			\item STP Motor reseten
+			\item DC Motor reseten
+			\item BLDC Motor reseten
 		\end{enumerate} \\ 
-		\hline Ergebnis & Der Motor wird sich um die entsprechende Anzahl Schritte drehen. Zusätzlich nimmt er seine Ausgangsposition beim Reset an. \\ 
+		\hline Ergebnis & Alle Motoren haben ihren Ausgangsstatus. \\ 
 		\hline 
 	\end{tabular}
 \end{table}
 
-\subsubsection{Bälle eingefüllt}
+\subsubsection{GST107 Bälle eingefüllt}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular}{|r|p{14cm}|}
-		\hline Beschreibung & Der DC Motor lässt sich via GUI ansteuern. \\ 
-		\hline Vorbedingungen & SYS102 \\ 
+		\hline Beschreibung & Die Bälle zum Abschuss einfüllen. \\ 
+		\hline Vorbedingungen &  GST106\\ 
 		\hline Testdaten & Konfigurationsdaten \\ 
 		\hline Vorgehen & 
 		\begin{enumerate}
-			\item Configurator starten
-			\item Schritte anpassen
-			\item Motor starten
-			\item Motor stoppen
-			\item Motor reset
+			\item 5 Bälle einfüllen
 		\end{enumerate} \\ 
-		\hline Ergebnis & Der Motor wird sich um die entsprechende Anzahl Schritte drehen. Zusätzlich nimmt er seine Ausgangsposition beim Reset an. \\ 
+		\hline Ergebnis & Der Ballwerfer ist geladen. \\ 
 		\hline 
 	\end{tabular}
 \end{table}
 
-\subsubsection{Kamera kalibriert}
+\subsubsection{GST108 Kamera kalibriert}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular}{|r|p{14cm}|}
-		\hline Beschreibung & Der DC Motor lässt sich via GUI ansteuern. \\ 
-		\hline Vorbedingungen & SYS102 \\ 
+		\hline Beschreibung & Kamera kalibrieren \\ 
+		\hline Vorbedingungen &  GST104\\ 
 		\hline Testdaten & Konfigurationsdaten \\ 
 		\hline Vorgehen & 
 		\begin{enumerate}
-			\item Configurator starten
-			\item Schritte anpassen
-			\item Motor starten
-			\item Motor stoppen
-			\item Motor reset
+			\item GUI Tab wechseln
+			\item Werte im Configurator einstellen
 		\end{enumerate} \\ 
-		\hline Ergebnis & Der Motor wird sich um die entsprechende Anzahl Schritte drehen. Zusätzlich nimmt er seine Ausgangsposition beim Reset an. \\ 
+		\hline Ergebnis & Die Kamera ist so eingestellt, dass sie den Korb erkennt. \\ 
 		\hline 
 	\end{tabular}
 \end{table}
