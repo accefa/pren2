@@ -1,0 +1,118 @@
+\subsection{REST Schnittstelle}
+
+Die Schnittstelle von der externen Steuereinheit zum Raspberry Pi wird über eine REST\footnote{Representational State Transfer}-Schnittstelle realisiert. Es wurden folgende Ressourcen definiert:
+\begin{itemize}
+	\item camera
+	\item image
+	\item start
+\end{itemize}
+Jede Ressource lässt sich mit HTML-Methoden (GET, PUT, POST usw.) abrufen oder verändern. Die Schnittstelle lässt sich ohne Authentifizierung nutzen und arbeiten mit dem JSON-Datenformat. Nachfolgend werden die einzelnen Ressourcen näher beschrieben.
+
+\subsubsection{GET camera}
+
+Diese Anfrage liefert die aktuellen Einstellungen der Bilderkennung zurück.\\
+
+\textbf{Parameter}
+
+
+\begin{tabular}{l p{16cm}}
+	\texttt{config} & Die Konfiguration der Bilderkennung \\
+	\texttt{line\_y} & Die Pixellinie welche analysiert werden soll um den Korb zu detektieren. \\
+	\texttt{line\_h} & Bei der Detektierung wird nicht nur eine Pixellinie untersucht. Mit \texttt{area} kann ein Band definiert werden in dem die Linien analysiert werden. \\
+	\texttt{greyscale\_threshold} & Schwellenwert der Objekterkennung. \\
+	\texttt{greyscale} & \texttt{true} wenn ein Graustufen-Bild erzeugt werden soll. \\
+	\texttt{quality} & Ein Wert zwischen 0 und 100 für die Qualität des JPEG-Bildes. \\
+	\texttt{crop\_x} & Breite des Feldes das auf beiden Seiten des Bildes abgeschnitten wird. \\
+	\texttt{contrast} & Ein Wert zwischen -100 und 100 für den Kontrast der Kamera. \\
+	\texttt{image} & Der URL zum Bild der Kamera. Bei jedem Aufruf wird ein neues Bild erstellt.
+\end{tabular}\\
+
+\textbf{Beispiel Request}
+
+\texttt{GET} 
+\texttt{http://<raspberrypi-ip>/camera}\\
+
+\textbf{Beispiel Result}
+
+\begin{lstlisting}[caption=GET camera Result, label=lst:camera, tabsize=2]
+{
+	"config": {
+		"line_y": 0, 
+		"line_h": 1, 
+		"greyscale_threshold": 0,
+		"greyscale": true, 
+		"quality": 90, 
+		"crop_x": 0, 
+		"contrast": 10, 
+	},
+	"image": "http://<raspberrypi-ip>/image/basket.jpeg"
+}
+\end{lstlisting}
+
+\subsubsection{PUT camera}
+
+Diese Anfrage verändert die Einstellungen der Bilderkennung.\\
+
+\textbf{Beispiel Request}
+
+\texttt{PUT}
+\texttt{http://<raspberrypi-ip>/camera} \\
+Body siehe Listing \ref{lst:camera}\\
+
+\textbf{Beispiel Result}
+
+\texttt{HTTP/1.1 200 OK} \\
+\texttt{Content-Type: text/json} \\
+
+\noindent
+Wenn kein valides JSON übergeben wurde: \\
+
+\noindent
+\texttt{HTTP/1.1 406 NOT ACCEPTABLE} \\
+\texttt{Content-Type: text/json}
+
+\subsubsection{GET image}
+
+Diese Anfrage liefert das Bild der Kamera zurück. Bei jeder Anfrage wird ein Bild erstellt.\\
+
+\textbf{Beispiel Request}
+
+\texttt{GET} 
+\texttt{http://<raspberrypi-ip>/image}\\
+
+\textbf{Beispiel Result}
+
+Bild im JPEG-Format
+
+\subsubsection{PUT start}
+
+Diese Anfrage startet den Vorgang und übergibt die Callback-Adresse vom Steuergerät, damit der Stopp-Befehl zurück gesendet werden kann.\\
+
+\textbf{Parameter}
+
+\begin{tabular}{l p{16cm}}
+	\textbf{url} & Die IP-Adresse des Steuergerätes. Diese wird benötigt um den Stopp-Befehl zurückzusenden.
+\end{tabular}\\
+
+\textbf{Beispiel Request}
+
+\texttt{PUT} 
+\texttt{http://<raspberrypi-ip>/start}
+
+\begin{lstlisting}[caption=PUT start Request, tabsize=2]
+{
+	"url": "http://<steuergerät-ip>"
+}
+\end{lstlisting}
+
+\textbf{Beispiel Result}
+
+\texttt{HTTP/1.1 200 OK} \\
+\texttt{Content-Type: text/json} \\
+
+\noindent
+Wenn keine URL übergeben wurde: \\
+
+\noindent
+\texttt{HTTP/1.1 406 NOT ACCEPTABLE} \\
+\texttt{Content-Type: text/json}
