@@ -1,11 +1,9 @@
 \section{Testplan}
 
-\subsection{Einführung}
+Der Testplan beschreibt alle wichtigen Testfälle und ihre erwarteten Resultate.
 
-Der Testplan
-
-\subsubsection{Ablaufplan}
-\begin{figure}
+\subsection{Ablaufplan}
+\begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{../../fig/ablauf-ballwurf}
 	\caption{}
@@ -106,222 +104,163 @@ Der Testplan
 
 \subsection{Testplan-Elektrotechnik}
 
-\subsection{Testplan-Informatik}
+\subsection{Gesamtsystemtest}
 
-Es wird zwischen Integrations- (INT) und Systemtest (SYS) unterschieden. Ein Integrationstest
-ist technisch getrieben und prüft das Zusammenspiel der Komponenten. Aus diesem
-Grund wird empfohlen, dass solche Tests von den Entwicklern selber durchgeführt werden.
-Systemtest hingegen sind benutzerorientiert. Diese testen das System als Ganzes.
-Die Tests sind voneinander abhängig, darum ist die Reihenfolge der Testausführung
-definiert. Denn ein Test kann als Vorbedingung für einen anderen Test gelten. 
-
-In den Tests wird von Controller und Configurator gesprochen. Der Controller ist
-das Raspberry Pi und der Configurator die externe Steuerungseinheit.
-Die Motoren sind als BLDC, DC und STP abgekürzt.
-BLDC ist der Motor für das Schwungrad, DC für den Ballvorschub und STP zum Drehen der Plattform.
+Im Gesamtsystemtest wird der Ballwerfer als Ganzes getestet. Im speziellen wird der Ablauf bei einem Probewurf simuliert.
 
 \subsubsection{Reihenfolge der Testdurchführung}
-INT101, INT102, INT103, INT104
-SYS101, SYS102, SYS103, SYS104, SYS105, SYS106, SYS107
+GST101, GST102, GST103, GST104, GST105, GST106, GST107, GST108
 
-
-
-
-\subsubsection{INT101 Webservice Erreichbarkeit}
+\subsubsection{GST101 Ballwerfer ausgerichtet}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular}{|r|p{14cm}|}
-		\hline Beschreibung & Die Webservices auf dem Controller müssen erreichbar sein. \\ 
-		\hline Vorbedingungen & Controller Setup \\ 
-		\hline Testdaten & URL: http://IP-ADDRESS-CONTROLLER:PORT-CONTROLLER \\ 
+		\hline Beschreibung & Ballwerfer ist mit der Schablone auf dem Spielfeld mittig ausgerichtet. \\ 
+		\hline Vorbedingungen &  \\ 
+		\hline Testdaten & Konfigurationsdaten \\ 
 		\hline Vorgehen & 
 		\begin{enumerate}
-			\item Browser öffnen und URL eingeben.
+			\item Schablone auflegen
+			\item Ballwerfer auf die Mitte stellen
+			\item Schablone entfernen
 		\end{enumerate} \\ 
-		\hline Ergebnis & Der Browser zeigt eine Willkommensseite an \\ 
+		\hline Ergebnis & Der Ballwerfer steht in der Mitte des Spielfeld.s \\ 
 		\hline 
 	\end{tabular}
 \end{table}
 
-\subsubsection{INT102 Webservice Bild laden}
+\subsubsection{GST102 Strom angeschlossen}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular}{|r|p{14cm}|}
-		\hline Beschreibung & Der Bild-Lade Webservice muss ein Bild zurückliefern. \\ 
-		\hline Vorbedingungen & INT101 \\ 
-		\hline Testdaten & URL: http://IP-ADDRESS-CONTROLLER:PORT-CONTROLLER/image \\ 
+		\hline Beschreibung & Alle Komponenten sind am Strom angeschlossen. \\ 
+		\hline Vorbedingungen &  GST101\\ 
+		\hline Testdaten & Konfigurationsdaten \\ 
 		\hline Vorgehen & 
 		\begin{enumerate}
-			\item Browser öffnen und URL eingeben
+			\item Netzteil am Strom anschliessen
+			\item Rasperry am Netzteil anschliessen
+			\item Freedom Board am Netzteil anschliessen
+			\item DC Motor am Netzteil anschliessen
+			\item BLDC Motor am Netzteil anschliessen
+			\item STP Motor am Netzteil anschliessen
 		\end{enumerate} \\ 
-		\hline Ergebnis & Ein Bild wird angezeigt. \\ 
+		\hline Ergebnis & Alle Komponenten sind am Strom angeschlossen und lassen sich in Betrieb nehmen. \\ 
+		\hline 
+	\end{tabular}
+\end{table}
+\newpage
+
+\subsubsection{GST103 Boards eingeschaltet}
+\begin{table}[h!]
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{|r|p{14cm}|}
+		\hline Beschreibung & Freedom Board und Rasperry einschalten. \\ 
+		\hline Vorbedingungen &  GST102\\ 
+		\hline Testdaten & Konfigurationsdaten \\ 
+		\hline Vorgehen & 
+		\begin{enumerate}
+			\item Freedom Board einschalten
+			\item Rasperry einschalten
+		\end{enumerate} \\ 
+		\hline Ergebnis & Freedom Board und Rasperry sind in Betrieb. \\ 
 		\hline 
 	\end{tabular}
 \end{table}
 
-\subsubsection{INT103 Webservice Kamera Konfig laden}
+\subsubsection{GST104 Verbindung aufgebaut}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular}{|r|p{14cm}|}
-		\hline Beschreibung & Der Kamera-Konfig-Lade Webservice muss ein JSON-File mit den aktuellen Einstellungen liefern. \\ 
-		\hline Vorbedingungen & INT102 \\ 
-		\hline Testdaten & URL: http://IP-ADDRESS-CONTROLLER:PORT-CONTROLLER/camera \\ 
+		\hline Beschreibung & Computer ist mit dem Rasperry WLAN verbunden. \\ 
+		\hline Vorbedingungen &  GST103\\ 
+		\hline Testdaten & Konfigurationsdaten \\ 
 		\hline Vorgehen & 
 		\begin{enumerate}
-			\item Browser öffnen und URL eingeben
+			\item Computer einschalten
+			\item WLAN verbinden
+			\item WLAN Login
 		\end{enumerate} \\ 
-		\hline Ergebnis & JSON-File mit aktuellen Einstellungen ist ersichtlich. \\ 
+		\hline Ergebnis & Computer ist mit dem Rasperry WLAN verbunden. \\ 
 		\hline 
 	\end{tabular}
 \end{table}
 
-\subsubsection{INT104 Webservice Kamera Konfig speichern}
+\subsubsection{GST105 GUI geöffnet}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular}{|r|p{14cm}|}
-		\hline Beschreibung & Der Kamera-Konfig-Speicher Webservice muss ein JSON-File entgegennehmen und die Einstellungen speichern. \\ 
-		\hline Vorbedingungen & INT103 \\ 
-		\hline Testdaten & URL: http://IP-ADDRESS-CONTROLLER:PORT-CONTROLLER/camera \\ 
-		\hline Vorgehen & 
-		\begin{enumerate}
-			\item Aktuelle Controller Einstellungen laden.
-			\item Einstellungen in ein JSON-File speichern.
-			\item Ein paar Werte anpassen.
-			\item PUT Request an die URL senden mit dem JSON-File.
-			\item Controller neu starten
-			\item Aktuelle Controller Einstellungen laden.
-		\end{enumerate} \\ 
-		\hline Ergebnis & Die Einstellungen müssen nun die gleichen sein wie vor dem Neustart. \\ 
-		\hline 
-	\end{tabular}
-\end{table}
-
-\subsubsection{SYS101 Configurator startet}
-\begin{table}[h!]
-	\renewcommand{\arraystretch}{1.5}
-	\begin{tabular}{|r|p{14cm}|}
-		\hline Beschreibung & Der Configurator lässt sich starten. \\ 
-		\hline Vorbedingungen & Configurator Setup \\ 
-		\hline Testdaten &  \\ 
-		\hline Vorgehen & 
-		\begin{enumerate}
-			\item Configurator starten
-		\end{enumerate} \\ 
-		\hline Ergebnis & Es erscheint eine Benutzeroberfläche. \\ 
-		\hline 
-	\end{tabular}
-\end{table}
-
-\subsubsection{SYS102 Configurator Verbindungseinstellungen }
-\begin{table}[h!]
-	\renewcommand{\arraystretch}{1.5}
-	\begin{tabular}{|r|p{14cm}|}
-		\hline Beschreibung & Im Configurator lassen sich die Verbindungseinstellungen zum Controller ändern. \\ 
-		\hline Vorbedingungen & SYS101 \\ 
-		\hline Testdaten & Eigene Verbindungsdaten definieren \\ 
-		\hline Vorgehen & 
-		\begin{enumerate}
-			\item Configurator starten
-			\item Verbindungeinstellungen ändern und speichern
-			\item Configurator neu starten
-		\end{enumerate} \\ 
-		\hline Ergebnis & Verbindungseinstellungen sind auch nach dem Neustart erhalten. \\ 
-		\hline 
-	\end{tabular}
-\end{table}
-
-\subsubsection{SYS103 Configurator Bild laden }
-\begin{table}[h!]
-	\renewcommand{\arraystretch}{1.5}
-	\begin{tabular}{|r|p{14cm}|}
-		\hline Beschreibung & Aktuelle Foto lässt sich laden und im Configurator anzeigen. \\ 
-		\hline Vorbedingungen & SYS102 \\ 
-		\hline Testdaten & Verbindungsdaten definieren, Bild \\ 
-		\hline Vorgehen & 
-		\begin{enumerate}
-			\item Configurator starten
-			\item Bild laden
-		\end{enumerate} \\ 
-		\hline Ergebnis & Aktuelles Foto erscheint im GUI. Auf dem Bild muss der Korb markiert sein und der Winkel angegeben. \\ 
-		\hline 
-	\end{tabular}
-\end{table}
-
-\subsubsection{SYS104 Configurator Bild Konfiguration anwenden }
-\begin{table}[h!]
-	\renewcommand{\arraystretch}{1.5}
-	\begin{tabular}{|r|p{14cm}|}
-		\hline Beschreibung & Die Kamera-Einstellungen lassen sich editieren und auf den Controller anwenden. \\ 
-		\hline Vorbedingungen & SYS103 \\ 
+		\hline Beschreibung & Der Configurator lässt sich auf dem Computer öffnen. \\ 
+		\hline Vorbedingungen &  GST104\\ 
 		\hline Testdaten & Konfigurationsdaten \\ 
 		\hline Vorgehen & 
 		\begin{enumerate}
 			\item Configurator starten
-			\item Kamera-Einstellunge editieren
-			\item Kamera-Einstellung speichern
-			\item Bild neu laden
 		\end{enumerate} \\ 
-		\hline Ergebnis & Auf dem GUI erscheint die Meldung, dass die Konfiguration erfolgreich gespeichert wurde.
-		Ausserdem erscheint das Bild, welches mit den aktuellen Einstellungen modifiziert wurden. \\ 
+		\hline Ergebnis & Der Configurator ist geöffnet und lässt sich bedienen. \\ 
+		\hline 
+	\end{tabular}
+\end{table}
+\newpage
+
+\subsubsection{GST106 Reset Motoren}
+\begin{table}[h!]
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{|r|p{14cm}|}
+		\hline Beschreibung & Alle Motoren haben einen Reset durchgeführt. \\ 
+		\hline Vorbedingungen &  GST105\\ 
+		\hline Testdaten & Konfigurationsdaten \\ 
+		\hline Vorgehen & 
+		\begin{enumerate}
+			\item GUI Tab wechseln
+			\item STP Motor reseten
+			\item DC Motor reseten
+			\item BLDC Motor reseten
+		\end{enumerate} \\ 
+		\hline Ergebnis & Alle Motoren haben ihren Ausgangsstatus. \\ 
 		\hline 
 	\end{tabular}
 \end{table}
 
-\subsubsection{SYS105 BLDC ansteuern}
+\subsubsection{GST107 Bälle eingefüllt}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular}{|r|p{14cm}|}
-		\hline Beschreibung & Der BLDC Motor lässt sich via GUI ansteuern. \\ 
-		\hline Vorbedingungen & SYS102 \\ 
+		\hline Beschreibung & Die Bälle zum Abschuss einfüllen. \\ 
+		\hline Vorbedingungen &  GST106\\ 
 		\hline Testdaten & Konfigurationsdaten \\ 
 		\hline Vorgehen & 
 		\begin{enumerate}
-			\item Configurator starten
-			\item RPM anpassen
-			\item Motor starten
-			\item Motor stoppen
-			\item Motor reset
+			\item 5 Bälle einfüllen
 		\end{enumerate} \\ 
-		\hline Ergebnis & Der Motor wird sich in der entsprechenden Geschwindigkeit drehen. \\ 
+		\hline Ergebnis & Der Ballwerfer ist geladen. \\ 
 		\hline 
 	\end{tabular}
 \end{table}
 
-\subsubsection{SYS106 DC ansteuern }
+\subsubsection{GST108 Kamera kalibriert}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular}{|r|p{14cm}|}
-		\hline Beschreibung & Der DC Motor lässt sich via GUI ansteuern. \\ 
-		\hline Vorbedingungen & SYS102 \\ 
+		\hline Beschreibung & Kamera kalibrieren \\ 
+		\hline Vorbedingungen &  GST104\\ 
 		\hline Testdaten & Konfigurationsdaten \\ 
 		\hline Vorgehen & 
 		\begin{enumerate}
-			\item Configurator starten
-			\item Motor starten
-			\item Motor stoppen
-			\item Motor reset
+			\item GUI Tab wechseln
+			\item Werte im Configurator einstellen
 		\end{enumerate} \\ 
-		\hline Ergebnis & Der Motor wird sich drehen. Zusätzlich nimmt er seine Ausgangsposition beim Reset an.\\ 
+		\hline Ergebnis & Die Kamera ist so eingestellt, dass sie den Korb erkennt. \\ 
 		\hline 
 	\end{tabular}
 \end{table}
 
-\subsubsection{SYS107 STP ansteuern}
-\begin{table}[h!]
-	\renewcommand{\arraystretch}{1.5}
-	\begin{tabular}{|r|p{14cm}|}
-		\hline Beschreibung & Der DC Motor lässt sich via GUI ansteuern. \\ 
-		\hline Vorbedingungen & SYS102 \\ 
-		\hline Testdaten & Konfigurationsdaten \\ 
-		\hline Vorgehen & 
-		\begin{enumerate}
-			\item Configurator starten
-			\item Schritte anpassen
-			\item Motor starten
-			\item Motor stoppen
-			\item Motor reset
-		\end{enumerate} \\ 
-		\hline Ergebnis & Der Motor wird sich um die entsprechende Anzahl Schritte drehen. Zusätzlich nimmt er seine Ausgangsposition beim Reset an. \\ 
-		\hline 
-	\end{tabular}
-\end{table}
+\newpage
+\input{content/testplan-mb}
+
+\clearpage
+
+\input{content/testplan-et}
+
+\newpage
+\input{content/testplan-it}

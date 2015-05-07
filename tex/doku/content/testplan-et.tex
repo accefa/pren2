@@ -1,0 +1,175 @@
+\subsection{Testplan-Elektrotechnik}
+\subsubsection{Kommunikation PC -- Shell auf Freedomboard kann von PC bedient werden}
+\begin{table}[h!]
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{|r|p{14cm}|}
+		\hline Beschreibung	&
+			Das Freedomboard kann per USB/UART-Verbindung bedient werden. \\ 
+		\hline Vorbedingungen	&
+			Toolchain, Terminalprogramm und Python installiert \\ 
+		\hline Testdaten	& - \\ 
+		\hline Vorgehen		& 
+		\begin{enumerate}
+			\item Freedomboard verbinden
+			\item Verbindung aufbauen mit Freedomboard
+			\item Terminalverbindung eröffnen
+			\item Reset des Freedomboards durchführen per Reset-Schalter
+			\item Ausgabe begutachten und auf Bereitschaft warten
+			\item Terminalverbindung schliessen
+			\item Testskript durchführen
+			\item Freedomboard trennen von PC 
+		\end{enumerate} \\ 
+		\hline Ergebnis 	&
+			Das Freedomboard zeigt auf der Terminalverbindung nach dem
+			Reset die Befehlsliste an. Das Testskript beendet erfolgreich.\\ 
+		\hline 
+	\end{tabular}
+\end{table}
+
+\newpage
+\subsubsection{Kommunikation RaspberryPi -- Freedomboard von RaspberryPi bedienbar}
+\begin{table}[h!]
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{|r|p{14cm}|}
+		\hline Beschreibung	&
+			Das Freedomboard kann per USB/UART-Verbindung bedient werden. \\ 
+		\hline Vorbedingungen	& Python installiert \\ 
+		\hline Testdaten	& - \\ 
+		\hline Vorgehen		& 
+		\begin{enumerate}
+			\item Freedomboard verbinden per USB Kabel
+			\item Testskript durchführen
+			\item Freedomboard trennen
+		\end{enumerate} \\ 
+		\hline Ergebnis 	&
+			Das Testskript beendet erfolgreich.\\ 
+		\hline 
+	\end{tabular}
+\end{table}
+
+\newpage
+\subsubsection{Ballabwurf -- BLDC Motor kann per Freedomboard bedient werden}
+\begin{table}[h!]
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{|r|p{14cm}|}
+		\hline Beschreibung	& Der BLDC Motor lässt sich via USB/UART ansteuern. \\ 
+		\hline Vorbedingungen	& Shell ist auf dem Freedomboard implementiert. \\ 
+		\hline Testdaten	& - \\ 
+		\hline Vorgehen		& 
+		\begin{enumerate}
+			\item Freedomboard verbinen
+			\item Verbindung aufbauen mit Freedomboard
+			\item Motorspeisung einschalten
+			\item Motor einschalten
+			\item Geschwindigkeit einstellen in 10\% Schritten
+			\item Geschwindigkeit auf 0 stellen
+			\item Motor ausschalten
+			\item Motorspeisung ausschalten 
+		\end{enumerate} \\ 
+		\hline Ergebnis 	&
+			Der Motor verändert die Geschwindigkeit ensprechend
+			den Einstellungen.\\ 
+		\hline 
+	\end{tabular}
+\end{table}
+
+\newpage
+\subsubsection{Positionsschalter -- Fixpositionen können per Software erkannt werden}
+\begin{table}[h!]
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{|r|p{14cm}|}
+		\hline Beschreibung	&
+			Software kann auf erreichen von Fixpositionen reagieren. \\ 
+		\hline Vorbedingungen	&
+			Shell ist auf dem Freedomboard implementiert.
+			Positionsschalter implementiert. \\ 
+		\hline Testdaten	& - \\ 
+		\hline Vorgehen		& 
+		\begin{enumerate}
+			\item Freedomboard verbinden
+			\item Verbindung aufbauen zum Freedomboard
+			\item Positionserkennung triggern
+			\item LED auf Freedomboard betachten
+			\item Positionstriggerung quittieren
+			\item Freedomboard trennen
+		\end{enumerate} \\ 
+		\hline Ergebnis 	&
+			Die LED auf dem Freedomboard reagiert auf die
+			Positionstriggerung und kann per Shell quittiert werden.\\ 
+		\hline 
+	\end{tabular}
+\end{table}
+
+\newpage
+\subsubsection{Ballnachschub -- DC Motor kann per Freedomboard bedient werden}
+\begin{table}[h!]
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{|r|p{14cm}|}
+		\hline Beschreibung	& Der DC Motor lässt sich via USB/UART ansteuern. \\ 
+		\hline Vorbedingungen	&
+			Shell ist auf dem Freedomboard implementiert.
+			DC-Treiberstufe implementiert. Positionsschalter implementiert. \\ 
+		\hline Testdaten	& - \\ 
+		\hline Vorgehen		& 
+		\begin{enumerate}
+			\item Freedomboard verbinden
+			\item Verbindung aufbauen mit Freedomboard
+			\item Motor in Mitte der Wegstrecke platzieren 
+			\item Verbindungsaufbau PC-Freedomboard
+			\item Motorspeisung einschalten
+			\item Bewegungsrichtung auf aufwärts einstellen
+			\item Motor einschalten
+			\item Motor einige Centimeter fahren lassen
+			\item Motor ausschalten
+			\item Bewegungsrichtung umstellen auf abwärts
+			\item Motor einschalten
+			\item Motor einige Centimeter fahren lassen
+			\item Motor ausschalten
+			\item Bewegungsrichtung umstellen auf aufwärts
+			\item Motor einschalten
+			\item Warten bis Endschalter auslöst
+			\item (Bewegungsrichtung umstellen)
+			\item Motor einschalten
+			\item Warten bis Endschalter auslöst
+			\item Motorspeisung ausschalten
+			\item Freedomboard trennen
+		\end{enumerate} \\ 
+		\hline Ergebnis 	&
+			Der Motor bewegt sich entsprechend der eingestellten
+			Bewegungsrichtung und lässt sich ein- und ausschalten.
+			Die Enschalter stoppen die Bewegung des Motors. \\ 
+		\hline 
+	\end{tabular}
+\end{table}
+
+\newpage
+\subsubsection{Turmausrichtung -- Schrittmotor kann per Freedomboard bedient werden}
+\begin{table}[h!]
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{|r|p{14cm}|}
+		\hline Beschreibung	&
+			Schrittmotor kann per Freedomboard bedient werden. \\ 
+		\hline Vorbedingungen	&
+			Shell ist auf dem Freedomboard implementiert.
+			Positionsschalter implementiert. \\ 
+		\hline Testdaten	& - \\ 
+		\hline Vorgehen		& 
+		\begin{enumerate}
+			\item Freedomboard verbinden
+			\item Verbindung aufbauen zum Freedomboard
+			\item Positionserkennung triggern
+			\item LED auf Freedomboard betachten
+			\item Positionstriggerung quittieren
+			\item Motorspeisung einschalten
+			\item Motor in verschiedenen Schrittweiten und Richtungen bewegen
+			\item Motor ausschalten
+			\item Freedomboard trennen
+		\end{enumerate} \\ 
+		\hline Ergebnis 	&
+			Die LED auf dem Freedomboard reagiert auf die
+			Positionstriggerung und kann per Shell quittiert werden.
+			Der Motor reagiert entsprechend auf die Ansteuerung. \\ 
+		\hline 
+	\end{tabular}
+\end{table}
+
