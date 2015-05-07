@@ -1,0 +1,92 @@
+\section{Produktanforderungen}
+
+Die Anforderungen wurden vom Team im PREN1 definiert und durch den betreuenden Dozenten abgenommen. Im Verlaufe des PREN2 wurden die Anforderungen angepasst und durch den Dozenten bestätigt. Nachfolgend liegt die vollständige Anforderungsliste vor. Auf der Liste ist erkennbar, welche Anforderungen geändert wurden. Nicht mehr gültige Anforderungen sind \sout{durchstrichen} und neue Elemente sind \uline{unterstrichen}.
+
+\renewcommand{\arraystretch}{1.5}
+\begin{longtable}[l]{|l|c|l|p{8.5cm}|}
+	\hline
+	\textbf{Nr.} & \textbf{F/M/W} & \textbf{Bezeichnung} & \textbf{Wert/Daten/Erläuterungen} \endhead
+	
+	\hline 1 &  & Gerät & \\ 
+	\hline 1.1 & F & Gerätemasse & 0.5 m $\times$ 0.5 m $\times$ 1.0 m  \\
+	\hline 1.2 & M & Gewicht & < 8 kg (ohne Energieversorgung, Tennisbälle und externes Kommunikationsgerät) sonst 0 Punkt \\
+	\hline 1.3 & W & Gewicht & \sout{< 4 kg} \newline \uline{< 6 kg (Begründung: Gewählter Aufbau wird durch Motoren und Konstruktion schwerer)} \\
+	\hline 1.4 & W & Standfestigkeit & stabil \\
+	\hline 1.5 & F & Startbefehl & drahtlos über ein externes Kommunikationsgerät (\sout{Smartphone}, \sout{Tablet}, Computer) \newline \uline{Es wird lediglich eine Java-Applikation für das Notebook entwickelt. Die Zeit ist zu knapp um ein App zu entwickeln.} \\   
+	\hline 1.6 & F & Stoppbefehl & auf demselben Kommunikationsgerät \sout{akustisch oder} visuell ausgegeben \newline \uline{Akustisch ist keine Pflicht, wenn es visuell ausgegeben wird. Akustisch wird somit nicht benötigt.}  \\ 
+	\hline 1.7 & W & Kommunikationsgerät & \sout{App auf Smartphone} \newline \uline{App keine Pflicht. Die Applikation läuft auf dem Notebook. Der Zeitraum um eine App zu entwickeln ist zu klein.} \\
+	\hline 1.8 & F & Aufhängevorrichtung & muss vorhanden sein (Wägen) \\
+	\hline 1.9 & F & Selbstständigkeit & keine Eingriffe von aussen nach dem Start \\
+	\hline 1.10 & W & Trefferquote & 100 \% (5 von 5 Bällen) \\
+	\hline 1.11 & W & Prozesszeit & \sout{< 1 Min}. \newline
+	\uline{< 90 Sekunden. Nachdem erkannt wurde, dass die Bilderkennung auf dem Raspberry PI nicht so rasant ist wie auf dem Notebook, sind wir mit der Zeit von 90 Sekunden zufrieden. Wichtiger ist die Stabilität und Funktionstüchtigkeit des Systems.} \\
+	\hline 1.12 & M & Startpositionierung & von Hand mithilfe von Schablone \\
+	\hline 2 &  & Energieversorgung & \\
+	\hline 2.1 & W & Bauart & einfach zu entnehmen  \\
+	\hline 2.2 & F & Bereitstellung & muss transportierbar sein  \\
+	\hline 2.3 & W & Wirkungsgrad & hoch \\
+	\hline 3 &  & Spielfeld & \\
+	\hline 3.1 & F & Abmasse & siehe Aufgabenstellung \\       
+	\hline 3.2 & F & Spielfeldrand & darf nicht umgriffen werden  \\
+	\hline 3.3 & F & Zone ohne Hindernisse & 0.5 m $\times$ 0.5 m $\times$ 1.8 m um Spielfeldrand \\
+	\hline 3.4 & F & Veränderungen am Spielfeld & keine erlaubt (z.B. Führungsschiene) \\
+	\hline 3.5 & F & Begrenzungslinie & darf nicht überragen oder überfahren werden \\
+	\hline 3.6 & F & Spielfeldboden & besteht aus hellen Spanplatten \\
+	\hline 3.7 & F & Spielfeldrückwand & besteht aus hellen Spanplatten \\
+	\hline 4 &  & Tennisball & \\
+	\hline 4.1 & F & Gewicht & 55 g - 60 g  \\
+	\hline 4.2 & F & Durchmesser & 6.3 cm - 7.3 cm   \\
+	\hline 4.3 & F & Farbe & gelb \\
+	\hline 4.4 & F & Modifikationen & nicht erlaubt  \\
+	\hline 5 &  & Korb & \\
+	\hline 5.1 & F & Höhe & 40 cm $\pm$ 2 cm \\        
+	\hline 5.2 & F & Durchmesser & > 30 cm  \\ 
+	\hline 5.3 & F & Farbe & schwarz  \\
+	\hline 5.4 & F & Befestigung & abgestützt an Rückwand  \\
+	\hline 5.5 & F & Position & innerhalb des Positionierungsfeldes (siehe Aufgabenstellung) seitlich verschiebbar  \\   
+	\hline 5.6 & F & Dämpfung & mit Sand oder Kissen damit Ball nicht rausspringt  \\
+	\hline 5.7 & F & Positionierung des Korbes & wird kurz (3 Sek.) vor dem Start positioniert  \\
+	\hline 6 &  & Wettbewerbskriterien & \\
+	\hline 6.1 & F & Einrichtzeit & 5 Min. \\
+	\hline 6.2 & F & Probewürfe & 2 Versuche \\    
+	\hline 6.3 & F & Spielzeit & max. 5 Min. \\
+	\hline 6.4 & F & Bewertungsformel & \textit{Anzahl Bälle + (5 [Min] - Spielzeit [Min])/[Min] + Gewichtspunkte}  \\  
+	\hline 6.5 & F & Gewichtspunkte &
+	\renewcommand{\arraystretch}{1.1} 
+	\begin{tabular}{l l l l l l}
+		&   & m & $\leq$ & 2 kg & 4 Punkte \\
+		2 kg & < & m & $\leq$ & 4 kg & 3 Punkte \\
+		4 kg & < & m & $\leq$ & 6 kg & 2 Punkte \\
+		6 kg & < & m & $\leq$ & 8 kg & 1 Punkt  \\
+		8 kg & < & m &        &      & 0 Punkte \\
+	\end{tabular} \\
+	\hline 6.6 & F & Trefferquote & min. 1 Ball im Korb sonst 0 Punkte \\
+	\hline 7 &  & Kosten & \\
+	\hline 7.1 & F & Budget & 600.- Fr. (200.- Fr. für PREN 1) \\
+	\hline 7.2 & F & Normteil & von HSLU Werkstatt beziehen \\
+	\hline 7.3 & F & Teile von Sponsoren & erlaubt (Kosten werden angerechnet) \\
+	\hline 7.4 & F & externes Kommunikationsgerät & Kosten werden nicht angerechnet \\
+	\hline 7.5 & F & externes Netzgerät & Kosten werden nicht angerechnet \\
+	\hline 7.6 & F & Occasion Material & \textonehalf-Kosten werden angerechnet \\
+	\hline 8 &  & Umgebungsbedingungen & \\
+	\hline 8.1 & F & Temperatur & 15$^\circ$C - 40$^\circ$C \\
+	\hline 8.2 & F & Luftfeuchtigkeit & 30 \% - 80 \% (nicht kondensierend) \\
+	\hline 8.3 & F & Spielfeldoberfläche & trocken und rau \\
+	\hline 8.4 & F & Unebenheiten auf Spielfeld & $\leq$ 1mm \\
+	\hline 8.5 & F & Luft & klar \\
+	\hline 8.6 & F & Licht & 1'200 lm - 100'000 lm (homogene Beleuchtung) \\
+	\hline 8.7 & F & Spielfeldneigung & $\leq$ 2$^\circ$ \\
+	\hline 8.8 & F & Standfestigkeit & stabil \\
+	\hline 8.9 & F & Windgeschwindigkeit & $\leq$ 1m/s \\
+	\hline 9 &  & Sicherheit & \\
+	\hline 9.1 & M & Gefährdungspotential & gering für Anwender \\
+	\hline 9.2 & M & Schutzart & IP20 \\
+	\hline 9.3 & M & Schutzleiter & muss vorhanden sein \\
+	\hline 10 &  & Recycling & \\
+	\hline 10.1 & W & Trennung & unterschiedliche Werkstoffe einfach trennbar \\
+	\hline 11 &  & Montage & \\
+	\hline 11.1 & W & Komponenten & schnell und einfach montierbar/demontierbar \\
+	\hline 11.2 & W & Spezialwerkezug & ohne Spezialwerkzeug montierbar/demontierbar \\
+	\hline 
+	
+\end{longtable}
