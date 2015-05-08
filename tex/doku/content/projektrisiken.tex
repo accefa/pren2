@@ -1,0 +1,115 @@
+\section{Projektrisiko}
+
+Im Team wurden Projektrisiken evaluiert und anhand der Wahrscheinlichkeit und der entstehenden Auswirkung eingeordnet. Zusätzlich wurden Gegenmassnahmen beschrieben.
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{r || c c c c}
+		häufig 		
+		& \cellcolor{red} 
+		& \cellcolor{red}
+		& \cellcolor{red}
+		& \cellcolor{red} \\
+		wahrscheinlich		
+		& \cellcolor{yellow} 
+		& \cellcolor{yellow} 
+		& \cellcolor{red}
+		& \cellcolor{red} \\
+		gelegentlich		
+		& \cellcolor{yellow}
+		& \cellcolor{yellow}
+		& \cellcolor{yellow}
+		& \cellcolor{red} \\
+		vorstellbar		
+		& \cellcolor{green}
+		& \cellcolor{yellow}
+		& \cellcolor{yellow}
+		& \cellcolor{yellow} \\
+		unwahrscheinlich	
+		& \cellcolor{green}
+		& \cellcolor{green}
+		& \cellcolor{yellow}
+		& \cellcolor{yellow} \\
+		unvorstellbar		
+		& \cellcolor{green}
+		& \cellcolor{green}
+		& \cellcolor{green}
+		& \cellcolor{green} \\
+		\hline
+		& unwesentlich & geringfügig & kritisch & katastrophal
+	\end{tabular}
+	\caption{Risikoreferenz}
+	\label{tab:risikoreferenz}
+\end{table}
+
+
+\begin{landscape}
+	\begin{table}
+		\begin{tabular}{|p{5cm}|c|c|p{9cm}|}
+			\hline Risiko & Auswirkung & Wahrscheinlichkeit & Massnahmen \\ 
+			
+			\hline \rowcolor{yellow} IT, MB Projektmitglied fällt aus & geringfügig & vorstellbar & 
+			- Vorzeitig über Abwesenheit informieren \newline
+			- Arbeitsstand in Gruppe kommunizieren \\ 
+			
+			\hline \rowcolor{red} ET Projektmitglied fällt aus & katastrophal & gelegentlich & 
+			- Wöchentlicher Gesundheits- und Gemütszustand rapportieren \newline
+			- Aufbau Know-How in den ET Arbeiten \\
+			
+			\hline \rowcolor{yellow} \hline Abweichung vom Terminplan & geringfügig & vorstellbar &
+			- Realistische Planung \newline
+			- Aufarbeiten in Reservezeit \\ 
+			
+			\hline \rowcolor{yellow} \hline Fehlende Zuverlässigkeit & kritisch & unwahrscheinlich &
+			- Klare Aufgabenverteilung \newline
+			- Review durch Teammitglieder \\ 
+			
+			\hline \rowcolor{yellow} \hline Algorithmus zur Korberkennung nicht robust & kritisch & vorstellbar &
+			- Gutes Unit-Testing des Algorithmus \newline
+			- Früh implementieren und testen \\
+			
+			\hline \rowcolor{green} \hline Fehlendes Know-How IT & geringfügig & unwahrscheinlich &
+			- RaspyPi früh aufsetzen \newline
+			- Know-How in Python aufbauen \\ 
+			
+			\hline \rowcolor{yellow} \hline Integration der ET Schnittstellen in die IT Umgebung & geringfügig & wahrscheinlich &
+			- Schnittstellen definieren  \\
+			
+			\hline \rowcolor{yellow} \hline Bälle treffen nicht präzise & kritisch & vorstellbar &
+			- Früh testen \newline
+			- Ballanpressdruck variieren \\ 
+			
+			\hline \rowcolor{yellow} \hline Stabilität beim Abwurf & kritisch & vorstellbar &
+			- Mehr Gewicht montieren oder Seitenstütze \newline
+			- Dicke der Wände \\ 
+			
+			\hline \rowcolor{yellow} \hline Falsche Dimensionierung der Motoren & kritisch & vorstellbar &
+			- Motoren neu kaufen. \\
+			
+			\hline \rowcolor{yellow} \hline Energieversorgung: Umbau von Servernetzteilen gelingt nicht & kritisch & vorstellbar &
+			- Andere Energieversorgung wählen \\ 
+			
+			\hline \rowcolor{yellow} \hline Schwingungen beim Abwurf & kritisch & vorstellbar &
+			- Drehrad auswuchten \newline
+			- Drehzahl reduzieren \\
+			- Konstruktion verstärken \\
+			
+			\hline \rowcolor{green} \hline Budget & geringfügig & unwahrscheinlich &
+			- Budgetplanung laufend aktualisieren  \\ 
+			- Planen bevor etwas eingekauft wird
+			
+			\hline \rowcolor{yellow} \hline Achse BLDC nicht stark genug & katastrophal & vorstellbar &
+			- Lagerung auf der gegenüberliegenden Seite des Motors erstellen \newline
+			- Trägheitsmoment Wurfrad anpassen \newline
+			- Langsameres anfahren \\
+			
+			\hline \rowcolor{yellow} \hline BLDC überhitzt & kritisch & vorstellbar &
+			- BLDC nicht im Dauerbetrieb laufen lassen \newline
+			
+			
+			
+		\end{tabular}
+		\caption{Risikomanagement}
+		\label{tab:risikomanagement}
+	\end{table} 
+\end{landscape}
