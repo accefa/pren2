@@ -1,6 +1,38 @@
 \subsection{Schnittstellen}
 In diesem Kapitel werden fachübergreifende Schnittstellen beschrieben.
 
-\subsubsection{Informatik - Elektrotechnik}
+\subsubsection{Raspberry-PI und Freedoam-Board}
+Die Elektrotechnik ist für die Informatik ein Service-Anbieter. Die Informatik konsumiert Dienstleistungen in Form der Motoren-Steuerung. Das Raspberry-PI ist über USB an das Freedom-Board angeschlossen. Die Software-Komponente Raspberry-PI Controller sendet Konsolen-Befehle über die USB Schnittstelle um die Motoren zu steuern. Es gibt drei Motoren:
+
+\begin{itemize}
+	\item BLDC - Motor, welcher das Schwungrad betreibt.
+	\item DC - Motor, welcher den Ballnachschub steuert.
+	\item STP - Motor, welcher den Turm ausrichtet.
+\end{itemize}
+
+\noindent
+Nachfolgende werden alle Konsolen Kommandos aufgelistet mit ihrer Bedeutung. \\
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline \textbf{Kommando}  & \textbf{Beschreibung} \\ 
+		\hline bldc start 5000  & Startet das Schwungrad mit 5000 RPM. \\ 
+		\hline bldc stop & Stoppt das Schwungrad.  \\ 
+		\hline bldc reset & Setzt das Schwungrad zurück. \\ 
+		\hline dc forward & Startet den Ballnachschub forwärts. \\ 
+		\hline dc backward & Startet den Ballnachschub rückwärts. \\ 
+		\hline dc stop & Stoppt den Ballnachschub. \\ 
+	    \hline dc reset & Setzt den Ballnachschub zurück. \\ 
+	    \hline stp start 400 & Richtet den Turm 400 nach rechts aus. \\ 
+	    \hline stp reset & Setzt den Turm an seinen Ausgangspunkt zurück. \\ 
+		\hline 
+	\end{tabular} 
+	\caption{Konsolen-Befehle des Freedom Boards}
+	\label{tab:freedom-board-konsolen-befehle}
+\end{table}
+
+\noindent
+\textbf{Synchronisierung:} Ein Befehl wird als beendet betrachtet, wenn über die serielle Schnittstelle der String accefa> zurückkommt. Das heisst, dass die Synchronisierung über aktives Warten realisiert ist.
 
 \subsubsection{Elektrotechnik - Maschinebau}
