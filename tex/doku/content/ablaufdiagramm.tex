@@ -1,1 +1,74 @@
 \subsubsection{Ablaufdiagramm}
+Der allgemeine Ablauf der autonomen Wurfmaschine kann als endlicher Automat
+modelliert werden, denn es gibt einen definierten Einstiegs- und 
+Ausstiegspunkt. Der Einstieg (Start) ist definiert durch den Beginn der 5 minütigen Kalibrierung und der Ausstiegspunkt (Ende) ist gegeben, wenn der Ballvorschub den vorderen Endpunkt erreicht hat. Zwischen Start und Ende muss das Zielobjekt identifiziert, die Maschine ausgerichtet, die Wurfautomatik parametriert und schlussendlich der Wurf durchgeführt werden.
+
+\begin{figure}[h!]
+	\centering
+	\begin{tikzpicture}[shorten >=2pt,node distance=4cm,on grid,auto]
+	\node[state,initial] 	(q_0) 						{$q_0$};
+	\node[state] 			(q_1) [above=of q_0]		{$q_1$};
+	\node[state]			(q_2) [right=of q_1]		{$q_2$};
+	\node[state]			(q_3) [right=of q_2]		{$q_3$};
+	\node[state]			(q_4) [right=of q_3]		{$q_4$};
+	\node[state,accepting]	(q_5) [below=of q_4]		{$q_5$};
+	\path[->]
+	(q_0)	edge node	{\begin{tabular}{c} Startsignal \end{tabular}} (q_1)
+	(q_1)	edge node	{Korb entdeckt}	(q_2)
+	(q_2)	edge node	{\begin{tabular}{c} Plattform \\ ausgerichtet \end{tabular}}	(q_3)
+	(q_3)	edge node	{Drehzahl erreicht}	(q_4)
+	(q_4)	edge node	{\begin{tabular}{c} Keine Bälle \\ vorhanden \end{tabular}}	(q_5);
+	\end{tikzpicture}
+	\caption{Autonome Wurfmaschine modelliert als endlicher Automat}
+\end{figure}
+
+\noindent
+\textbf{Zustands- und Zustandsübergangsbeschreibungen}
+\begin{itemize}
+	
+	\item Start \\ \\
+	Gestartet wird nicht mit dem eigentlichen autonomen Prozess, sondern mit der Einrichtung der Maschine und der Kalibrierung.
+	
+	\item Kalibrierung ($q_{0}$) \\ \\
+	Zu Beginn steht eine 5 minütige Kalibrierung zur Verfügung. In dieser Phase kann die Elektronik auf die Mechanik abgestimmt und allfällige Einstellungen am Bildverarbeitungssystem vorgenommen werden. Nach Ablauf dieser 5 Minuten darf keine Änderung am System mehr vorgenommen werden. Siehe dazu Anhang \ref{fig:ablauf-ballwurf}.
+	
+	\item Zustandsübergang von $q_{0}$ zu $q_{1}$ \\ \\
+	Der eigentliche Prozess erfolgt nun mittels eines Start-Signales, welches von einer externen Steuerungseinheit drahtlos übermittelt wird.
+	
+	\item Ortung des Korbs ($q_{1}$) \\ \\
+	Zur Ortung des Korbs wird ein Foto mit einer eingebauten Kamera gemacht. Dieses Foto wird mittels eines eigenen Algorithmus ausgewertet um den Ort zu bestimmen. Der Korb wird immer entdeckt, was jedoch nicht automatisch bedeutet, dass die richtige Position zurückgegeben wird. Denn statt das System stillzulegen, wenn der Korb nicht detektiert wird, kann man immer noch auf Basis des Zufalls erfolgreich sein.
+	
+	\newpage
+	
+	\item Zustandsübergang von $q_{1}$ zu $q_{2}$ \\ \\
+	Sobald die Detektierung abgeschlossen ist, wird der einzustellende Winkel der Komponente, welche für die Ausrichtung zuständig ist, übermittelt.
+	
+	\item Plattform ausrichten ($q_{2}$) \\ \\
+	Die Plattform wird anhand der Positionsdaten ausgerichtet.
+	
+	\item Zustandsübergang von $q_{2}$ zu $q_{3}$ \\ \\
+	Sobald der Prozess zur Ausrichtung der Plattform vollzogen ist, wird in den nächsten Zustand gewechselt.
+	
+	\item Drehzahl erreichen ($q_{3}$) \\ \\
+	Der Antrieb des Drehrades wird gestartet. Damit immer von den gleichen Anfangsbedingungen ausgegangen werden kann, muss zuerst eine vorher definierte Drehzahl erreicht werden. Es wird die Anlaufverzögerung des Motors abgewartet und gemessen ob die gewünschte Drehzahl erreicht wurde.
+	
+	\item Zustandsübergang von $q_{3}$ zu $q_{4}$ \\ \\
+	Sobald die Soll-Drehzahl erreicht wurde, wird in den nächsten Zustand gewechselt. Die Drehzahl wird bis zum Ende des ganzen Abwurfs konstant bleiben. Es wird darauf verzichtet, das Rad nach jedem Wurf zu stoppen und wieder neu zu starten.
+	
+	\item Ballvorschub starten ($q_{4}$) \\ \\
+	Die Ballwurfmaschine ist somit schussbereit. Als nächstes wird der Spindelantrieb des Ballvorschubes gestartet. Der Ballvorschub führt die Bälle an das Drehrad heran und die Bälle werden beschleunigt. 
+	
+	\item Zustandsübergang von $q_{4}$ zu $q_{5}$ \\ \\
+	Sobald der Ballvorschub den vorderen Endpunkt erreicht hat, wurden alle Bälle abgeworfen und es kann in den nächsten Zustand gewechselt werden.
+	
+	\item Stoppsignal senden ($q_{5}$) \\ \\
+	Die externe Steuerungseinheit, welche das Start-Signal abgegeben hat, erhält das Stoppsignal.
+	
+	\item Ende \\ \\
+	Mit dem Erhalt des Stoppsignal ist der Prozess abgeschlossen.
+	
+\end{itemize}
+
+\noindent
+\textbf{Fehler-Szenarien}
+Während des ganzen Ablaufs können Fehler auftreten. Fällt eine Teilfunktion aus, so soll nach Möglichkeit trotzdem immer in den nächsten Zustand gewechselt werden. Kann beispielsweise der Korb nicht detektiert werden, so soll ein Zufallswinkel dem nächsten Zustand übermittelt werden. Kann die Plattform nicht ausgerichtet werden, dann soll die Transition in den nächsten Zustand trotzdem erfolgen. Wird nicht die gewünschte Drehzahl erreicht, soll anschliessend trotzdem versucht werden die Bälle abzuschiessen. Das Motto bei einem Fehler ist somit immer Best-Effort. Es ist nicht nötig direkt in den $q_{5}$ zu wechseln. Jede Funktion kann trotzdem ausgeführt werden, wenn eine davor liegende Funktion nicht ausgeführt werden konnte.
