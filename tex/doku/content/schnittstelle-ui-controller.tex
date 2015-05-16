@@ -1,4 +1,4 @@
-\subsection{REST Schnittstelle}
+\subsubsection{REST Schnittstelle}
 Die Schnittstelle von der externen Steuereinheit zum Raspberry Pi wird über eine REST\footnote{Representational State Transfer}-Schnittstelle realisiert. Es wurden folgende Ressourcen definiert:
 \begin{itemize}
 	\item start
@@ -6,10 +6,10 @@ Die Schnittstelle von der externen Steuereinheit zum Raspberry Pi wird über ein
 	\item drive
 	\item logger
 \end{itemize}
-Jede Ressource lässt sich mit HTTP-Methoden (GET, PUT, POST usw.) abrufen oder verändern. Die Schnittstelle lässt sich ohne Authentifizierung nutzen und arbeiten mit dem JSON-Datenformat. Nachfolgend werden die einzelnen Ressourcen näher beschrieben.
+Jede Ressource lässt sich mit HTTP-Methoden (GET, PUT, POST usw.) abrufen oder verändern. Die Schnittstelle lässt sich ohne Authentifizierung nutzen und arbeiten mit dem JSON-Datenformat. Nachfolgend werden die einzelnen Ressourcen näher beschrieben.\\
 
-
-\subsubsection{PUT start}
+\noindent
+\textbf{PUT start}\\
 Diese Anfrage startet den Wurf-Vorgang und ist blockierend. Es müssen keine Parameter übergeben werden.\\
  
 \textbf{Beispiel Request}
