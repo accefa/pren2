@@ -4,7 +4,7 @@ Das Fotoshoot UI hat mehrere Funktionen. Es dient um den Ballwurf-Prozess zu sta
 
 \noindent
 \textbf{Ballwurf-Prozess}
-Der gesamte Prozess kann mittels dem Start-Knopf gestartet werden. Die Benutzeroberfläche wird eingefroren und die Zeit wird gestoppt. Sobald der Prozess beendet wurde, wird die vergangen Zeit angezeigt.
+Der gesamte Prozess kann mittels Start-Knopf gestartet werden. Die Benutzeroberfläche wird eingefroren und die Stoppuhr gestartet. Sobald der Prozess beendet wurde, wird die vergangene Zeit angezeigt.
 
 \begin{figure}[h!]
 \centering
@@ -15,7 +15,7 @@ Der gesamte Prozess kann mittels dem Start-Knopf gestartet werden. Die Benutzero
 
 \noindent
 \textbf{Kalibrierung der Korberkennung}
-In diesem Bereich können die Parameter für die Bild-Erkennung definiert werden. Die Bedeutung der Parameter sowie die gültigen Werte sind in Abschnitt \ref{sec:parameter-bild-erkennung} detailliert beschrieben.
+In diesem Bereich können die Parameter für die Bild-Erkennung definiert werden. Die Bedeutung der Parameter sowie die gültigen Werte sind in dem Abschnitt \ref{sec:parameter-bild-erkennung} detailliert beschrieben.
 
 \begin{figure}[h!]
 	\centering
@@ -54,10 +54,10 @@ Das Fotoshoot-UI wurde in Java und mit der heute aktuellen UI-Technologie Java-F
 Auf der Abbildung \ref{fig:fotoshoot-ui-paketdiagramm} ist zu erkennen wie die Applikation aufgebaut ist. Nachfolgend werden die einzelnen Pakete erklärt:
 		
 \begin{itemize}
-	\item Controllers: Die Controllers beinhalten die FXML-Dateien und die konkreten Controller Klassen. Controller sind für die Benutzer-Aktionen, Service-Calls, sowie die Beziehung zwischen Modell und UI zuständig.
+	\item Controller: Die Controller beinhalten die FXML-Dateien und die konkreten Controller Klassen. Sie sind für die Benutzer-Aktionen, Service-Calls, sowie die Beziehung zwischen Modell und UI zuständig.
 	\item Modell: Dies sind die Modelle fürs GUI. Diese sind fürs GUI zugeschnitten. Die Modelle beinhalten die Properties, welche über die Controller in die Views gebunden werden.
-	\item Services: Diese sind zuständig zuständig für die Daten. Sowohl Daten-Abfrage und auch Manipulation. Stellen die Schnittstelle zum Business-Layer dar.
+	\item Services: Diese sind zuständig für die Daten. Sowohl Daten-Abfrage und auch Manipulation. Sie stellen die Schnittstelle zum Business-Layer dar.
 	\item Events: Das sind POJOs, welche von den Controller verwendet werden. Diese werden für die Kommunikation der Controller untereinander über den Eventbus benötigt.
 \end{itemize}
 			
-Jeder Controller kann der Ursprung für eine Benutzeraktion sein, welcher Einfluss auf irgendwelche welche Views hat. Diesen Views liegen auch wieder Controllers zugrunde. Damit nicht jeder Controller jeden anderen Controller kennen muss, verwenden wir hier den EventBus von Google. Jeder Controller wird automatisch registriert und kann über den Eventbus Events senden und sich für jedes Event auch wieder registrieren.
+Jeder Controller kann der Ursprung für eine Benutzeraktion sein, welcher Einfluss auf irgendwelche Views hat. Diesen Views liegen auch wieder Controllers zugrunde. Damit nicht jeder Controller jeden anderen Controller kennen muss, verwenden wir hier den EventBus von Google. Jeder Controller wird automatisch registriert und kann über den Eventbus Events senden und sich für jedes Event auch wieder registrieren.
