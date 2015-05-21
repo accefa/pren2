@@ -1,5 +1,21 @@
 \section{Management Summary}
-Die vorliegende Dokumentation befasst sich mit der Umsetzung des Lösungskonzepts der Gruppe 39 für eine autonome Ballwurfmaschine.
-Im Rahmen des Moduls PREN2 setzen wir uns mit dem Zusammenbau und dem Testen des Prototypen und dessen Funktionen auseinander.
-Dazu wurden die Komponenten eingekauft und wenn notwendig angepasst. Von der Elektrotechnik wurden sämtliche Boards und Steuerungen bereitgestellt.
-So kann die Informatik über bestimmte Schnittstellen optimal auf die Maschine zugreifen und diese steuern.
+
+Im Rahmen von PREN2 setzen wir das in PREN1 ausgewählte Lösungskonzept in die Realität um. Dadurch sammeln wir viel Erfahrung in der Zusammenarbeit mit verschiedenen Disziplinen. Dies tun ebenfalls einige andere Gruppen, mit denen wir in Konkurrenz stehen. Wir setzen uns zum Ziel, eine zuverlässige und robuste Maschine zu erschaffen, welche alle Bälle in den Korb befördert.
+Zuerst definieren wir in der Gruppe die Schnittstellen zwischen Informatik, Elektrotechnik und Maschinenbau. Anschliessend arbeiten die einzelnen Disziplinen an ihren eigenen unabhängigen Bereichen.
+
+Die Informatik befasst sich mit der Bedienung und der Logik des Aufbaus. Hierzu gehören ein GUI und Software für ein Raspberry Pi. Das Raspberry Pi liefert die Befehle verarbeitet an ein Freedom Board weiter. Diese Verbindung stellt die Schnittstelle zwischen Informatik und Elektrotechnik dar. Da die Maschine autonom funktionieren muss, wird vom Raspberry Pi ein WLAN Hotspot und ein Webserver gestartet. Somit ist es möglich, bequem aus der Distanz eine Verbindung aufzubauen und die Befehle über das GUI abzuschicken.
+
+Die Teilgruppe Maschinenbau beschäftigt sich mit der Umsetzung der Konstruktion. Diese umfasst drei Motoren mit unterschiedlicher Funktion, welche jeweils speziell montiert sind. Das Gesamtkonzept sieht vor die Maschine zu Beginn auszurichten und die Bälle nacheinander über ein Schwungrad abzuschiessen. Um die Bälle nachzuschieben wird eine drehbare, gelagerte Gewindestange montiert an der ein Holzplättchen hängt. Diese drückt die Bälle kontinuierlich weiter. Ohne Lagerung der Stange würde diese verklemmen, dies kann zu Problemen führen, hauptsächlich jedoch zu Lärm. Der Ausgang ist verengt und sorgt dafür, dass die Bälle an das Schwungrad gedrückt werden. Der richtige Anpressdruck wird durch variable Führungshalter gewährleistet. Dieser ist ausschlaggebend für die Wurfweite, die Umdrehungsgeschwindigkeit kann vernachlässigt werden.
+
+Die Elektronik hat die Aufgabe die Motoren der Maschinenbauer anzusteuern und die Befehle der Infomatik auszuführen.
+
+
+
+%Aufbau
+Ausgangslage: Warum wurde das Projekt durchgeführt? Welche ähnlichen Entwicklungen gibt es in diesem Bereich? Welche Ziele setzte sich das Projekt?
+
+Vorgehen/Methode: Was wurde im Projekt ausgeführt? In welchen Teilschritten erfolgt die Untersuchung? Wer war am Projekt beteiligt?
+
+Ergebnisse/Lösungsvorschläge/Handlungsempfehlungen: Was ist das Resultat des Projekts? In welcher Hinsicht ist der Nutzen quantifizierbar? In welcher Weise wurden die Ziele erreicht? In welcher Weise kam es zu positiven/negativen Abweichungen. Wie hoch waren die Kosten? Welche Lerneffekte ergaben sich aus der Durchführung des Projekts?
+
+Ausblick/Konsequenzen für die Organisation (SWOT)/Handlungsempfehlungen: In welcher Weise können die Ergebnisse für die Organisation verwendet werden? Welche alternativen Entscheide sind möglich? Welche verbleibenden Probleme und Risiken gibt es? Was heisst dies für die Zukunft der Organisation?
