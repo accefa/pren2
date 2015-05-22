@@ -3,30 +3,31 @@ In diesem Kapitel werden fachübergreifende Schnittstellen beschrieben.
 
 \subsubsection{Raspberry-PI und Freedom-Board}
 \label{sec:schnittstelle-raspi-freedom}
-Die Elektrotechnik ist für die Informatik ein Service-Anbieter. Die Informatik konsumiert Dienstleistungen in Form der Motoren-Steuerung. Das Raspberry-PI ist über USB an das Freedom-Board angeschlossen. Die Software-Komponente Raspberry-PI Controller sendet Konsolen-Befehle über die USB Schnittstelle um die Motoren zu steuern. Es gibt drei Motoren:
+Die Elektrotechnik ist für die Informatik ein Service-Anbieter. Die Informatik konsumiert Dienstleistungen in Form der Motoren-Steuerung. Das Raspberry-PI ist über USB an das Freedom-Board angeschlossen. Die Software-Komponente Raspberry-PI Controller sendet Konsolen-Befehle über eine serielle Schnittstelle (UART) um die Motoren zu steuern. Es gibt drei Motoren:
 
-\begin{itemize}
-	\item BLDC - Motor, welcher das Schwungrad betreibt.
-	\item DC - Motor, welcher den Ballnachschub steuert.
-	\item STP - Motor, welcher den Turm ausrichtet.
-\end{itemize}
+\begin{description}
+	\item[BLDC:] Motor, welcher das Schwungrad betreibt.
+	\item[DC:] Motor, welcher den Ballnachschub steuert.
+	\item[STP:] Motor, welcher den Turm ausrichtet.
+\end{description}
 
 \noindent
 Nachfolgend werden alle Konsolen Kommandos aufgelistet mit ihrer Bedeutung. \\
 
 \begin{table}[h!]
 	\centering
+	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular}{|c|c|}
 		\hline \textbf{Kommando}  & \textbf{Beschreibung} \\ 
-		\hline bldc start 5000  & Startet das Schwungrad mit 5000 RPM. \\ 
-		\hline bldc stop & Stoppt das Schwungrad.  \\ 
-		\hline bldc reset & Setzt das Schwungrad zurück. \\ 
-		\hline dc forward & Startet den Ballnachschub forwärts. \\ 
-		\hline dc backward & Startet den Ballnachschub rückwärts. \\ 
-		\hline dc stop & Stoppt den Ballnachschub. \\ 
-	    \hline dc reset & Setzt den Ballnachschub zurück. \\ 
-	    \hline stp start 400 & Richtet den Turm 400 Schritte nach rechts aus. \\ 
-	    \hline stp reset & Setzt den Turm an seinen Ausgangspunkt zurück. \\ 
+		\hline \texttt{bldc start 5000}  & Startet das Schwungrad mit 5000 RPM. \\ 
+		\hline \texttt{bldc stop} & Stoppt das Schwungrad.  \\ 
+		\hline \texttt{bldc reset} & Setzt das Schwungrad zurück. \\ 
+		\hline \texttt{dc forward} & Startet den Ballnachschub forwärts. \\ 
+		\hline \texttt{dc backward} & Startet den Ballnachschub rückwärts. \\ 
+		\hline \texttt{dc stop} & Stoppt den Ballnachschub. \\ 
+	    \hline \texttt{dc reset} & Setzt den Ballnachschub zurück. \\ 
+	    \hline \texttt{stp start 400} & Richtet den Turm 400 Schritte nach rechts aus. \\ 
+	    \hline \texttt{stp reset} & Setzt den Turm an seinen Ausgangspunkt zurück. \\ 
 		\hline 
 	\end{tabular} 
 	\caption{Konsolen-Befehle des Freedom Boards}
@@ -34,6 +35,8 @@ Nachfolgend werden alle Konsolen Kommandos aufgelistet mit ihrer Bedeutung. \\
 \end{table}
 
 \noindent
-\textbf{Synchronisierung:} Ein Befehl wird als beendet betrachtet, wenn über die serielle Schnittstelle der String accefa> zurückkommt. Das heisst, dass die Synchronisierung über aktives Warten realisiert ist.
+\textbf{Synchronisierung:} Ein Befehl wird als beendet betrachtet, wenn über die serielle Schnittstelle der String \texttt{accefa>} zurückkommt. Die Synchronisierung wird demzufolge über aktives Warten (Polling) realisiert.
 
 \subsubsection{Elektrotechnik - Maschinebau}
+
+%TODO Schnittstelle beschreiben

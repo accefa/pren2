@@ -1,209 +1,250 @@
-\subsection{REST Schnittstelle}
+\subsubsection{REST Schnittstelle}
 \label{sec:rest-schnittstelle}
 
 Die Schnittstelle von der externen Steuereinheit zum Raspberry Pi wird über eine REST\footnote{Representational State Transfer}-Schnittstelle realisiert. Es wurden folgende Ressourcen definiert:
 \begin{itemize}
-	\item start
-	\item camera
-	\item drive
-	\item logger
+	\item \texttt{start}
+	\item \texttt{camera}
+	\item \texttt{drive}
+	\item \texttt{logger}
 \end{itemize}
-Jede Ressource lässt sich mit HTTP-Methoden (GET, PUT, POST usw.) abrufen oder verändern. Die Schnittstelle lässt sich ohne Authentifizierung nutzen und arbeiten mit dem JSON-Datenformat. Nachfolgend werden die einzelnen Ressourcen näher beschrieben.\\
-
-\noindent
-\textbf{PUT start}\\
-Diese Anfrage startet den Wurf-Vorgang und ist blockierend. Es müssen keine Parameter übergeben werden.\\
- 
-\textbf{Beispiel Request}
-
-\texttt{PUT}
-\texttt{http://<raspberrypi-ip>/start}
-
-\begin{lstlisting}[caption=PUT start Request, tabsize=2]
-{}
-\end{lstlisting}
-
-\textbf{Beispiel Result}
-
-\begin{lstlisting}[caption=PUT start Response, tabsize=2]
-HTTP/1.1 200 OK
-Content-Type: text/plain
-\end{lstlisting}
-
-
-
-
-
-\subsubsection{GET camera}
-Diese Anfrage liefert die aktuellen Einstellungen der Bilderkennung zurück.\\
-\label{sec:parameter-bild-erkennung}
-
-\textbf{Parameter}
-
-\begin{tabular}{l p{16cm}}
-	\texttt{config} & Die Konfiguration der Bilderkennung \\
-	\texttt{line\_y} & Die Pixellinie welche analysiert werden soll um den Korb zu detektieren. \\
-	\texttt{line\_h} & Bei der Detektierung wird nicht nur eine Pixellinie untersucht. Mit \texttt{area} kann ein Band definiert werden in dem die Linien analysiert werden. \\
-	\texttt{greyscale\_threshold} & Schwellenwert der Objekterkennung. \\
-	\texttt{greyscale} & \texttt{true} wenn ein Graustufen-Bild erzeugt werden soll. \\
-	\texttt{quality} & Ein Wert zwischen 0 und 100 für die Qualität des JPEG-Bildes. \\
-	\texttt{crop\_x} & Breite des Feldes das auf beiden Seiten des Bildes abgeschnitten wird. \\
-	\texttt{contrast} & Ein Wert zwischen -100 und 100 für den Kontrast der Kamera. \\
-\end{tabular}\\
-
-\textbf{Beispiel Request}
-
-\texttt{GET} 
-\texttt{http://<raspberrypi-ip>/camera}\\
-
-\textbf{Beispiel Result}
-
-\begin{lstlisting}[caption=GET camera Result, label=lst:camera, tabsize=2]
-{
-	"config": {
-		"line_y": 0, 
-		"line_h": 1, 
-		"greyscale_threshold": 0,
-		"greyscale": true, 
-		"quality": 90, 
-		"crop_x": 0, 
-		"contrast": 10, 
-	}
-}
-\end{lstlisting}
-
-\subsubsection{PUT camera}
-
-Diese Anfrage verändert die Einstellungen der Bilderkennung.\\
-
-\textbf{Beispiel Request}
-
-\texttt{PUT}
-\texttt{http://<raspberrypi-ip>/camera} \\
-Body siehe Listing \ref{lst:camera}\\
-
-\textbf{Beispiel Result}
-
-\texttt{HTTP/1.1 200 OK} \\
-\texttt{Content-Type: text/json} \\
-
-\noindent
-Wenn kein valides JSON übergeben wurde: \\
-
-\noindent
-\texttt{HTTP/1.1 406 NOT ACCEPTABLE} \\
-\texttt{Content-Type: text/json}
-
-
-\subsubsection{POST camera}
-
-Diese Anfrage erzeugt ein neues Bild und lässt die Detektierung laufen. Es sind keine Parameter notwendig. \\
-
-\textbf{Beispiel Request}
-
-\texttt{POST}
-\texttt{http://<raspberrypi-ip>/camera} \\
-\begin{lstlisting}[caption=POST camera Request, tabsize=2]
-{}
-\end{lstlisting}
-
-\textbf{Beispiel Result}
-\begin{lstlisting}[caption=POST camera Response, tabsize=2]
-HTTP/1.1 200 OK
-Content-Type: text/plain
-\end{lstlisting}
-
-
-
-\subsubsection{POST bldc}
-
-Für den BLDC gibt es drei Ressourcen. bldc/start, bldc/stop und bldc/reset. Reset und Stop benötigen keine Parameter. Alle Responses sind empty. Für start braucht es den RPM (Rounds per Minute) Wert des Schwungrades. Der RPM Wert muss zwischen 4000 und 20000 liegen.
-
-\textbf{Beispiel Request}
-
-\texttt{POST}
-\texttt{http://<raspberrypi-ip>/bldc/start} \\
-\begin{lstlisting}[caption=POST bldc/start Request, tabsize=2]
-{
-    rpm: 5000
-}
-\end{lstlisting}
-
-\textbf{Beispiel Result}
-\begin{lstlisting}[caption=POST bldc/start Response, tabsize=2]
-HTTP/1.1 200 OK
-Content-Type: text/plain
-\end{lstlisting}
-
-
-
-
-\subsubsection{POST dc}
-
-Für den DC gibt es vier Ressourcen: dc/forward, dc/backward, dc/stop und dc/reset. Alle Request verlangen keine Parameter und alle Response sind leer
-
-\textbf{Beispiel Request}
-
-\texttt{POST}
-\texttt{http://<raspberrypi-ip>/bldc/*} \\
-\begin{lstlisting}[caption=POST dc/* Request, tabsize=2]
-{
-}
-\end{lstlisting}
-
-\textbf{Beispiel Result}
-\begin{lstlisting}[caption=POST dc/* Response, tabsize=2]
-HTTP/1.1 200 OK
-Content-Type: text/plain
-\end{lstlisting}
-
-
-
-
-\subsubsection{POST stp}
-
-Für den STP gibt es zwei Ressourcen: stp/start und stp/reset. Der Reset Request verlangt keine Parameter. Alle Responses sind leer. Die Start-Resource verlangt die Steps, welcher der Stepper durchführen muss. Negativ ist eine Linksdrehung, positiv ist eine Rechtsdrehung.
-
-\textbf{Beispiel Request}
-
-\texttt{POST}
-\texttt{http://<raspberrypi-ip>/stp/start} \\
-\begin{lstlisting}[caption=POST stp/start Request, tabsize=2]
-{
-   steps: 432
-}
-\end{lstlisting}
-
-\textbf{Beispiel Result}
-\begin{lstlisting}[caption=POST stp/start Response, tabsize=2]
-HTTP/1.1 200 OK
-Content-Type: text/plain
-\end{lstlisting}
-
-
-
-
-
-
-
-\subsubsection{GET logger}
-
-Diese Anfrage liefert das Log-File des Server zurück.\\
-
-\textbf{Beispiel Request}
-
-\texttt{GET} 
-\texttt{http://<raspberrypi-ip>/logger}\\
-
-\textbf{Beispiel Result}
-
-\begin{lstlisting}[caption=POST camera Response, tabsize=2]
-HTTP/1.1 200 OK
-Content-Type: text/plain
-15.05.2015 15:16:33 INFO Starte Prozess
-15.05.2015 15:16:34 INFO Richte Stepper aus
-15.05.2015 15:16:39 INFO Starte BLDC
-15.05.2015 15:16:59 INFO Ballnachschub starten
-15.05.2015 15:18:02 INFO Prozess beendet
-\end{lstlisting}
+Jede Ressource lässt sich mit HTTP-Methoden (\texttt{GET}, \texttt{PUT}, \texttt{POST} usw.) abrufen oder verändern. Die Schnittstelle lässt sich ohne Authentifizierung nutzen und arbeiten mit dem JSON-Datenformat. Nachfolgend werden die einzelnen Ressourcen näher beschrieben.
+
+\paragraph{\texttt{GET /camera}}
+
+Diese Anfrage liefert die aktuellen Einstellungen der Bilderkennung zurück. Nachfolgenden sind die Parameter der Kamera dokumentiert.
+
+\begin{table}[h!]
+	\begin{tabular}{l p{16cm}}
+		\texttt{config} & Die Konfiguration der Bilderkennung \\
+		\texttt{line\_y} & Die Pixellinie welche analysiert werden soll um den Korb zu detektieren. \\
+		\texttt{line\_h} & Bei der Detektierung wird nicht nur eine Pixellinie untersucht. Mit \texttt{area} kann ein Band definiert werden in dem die Linien analysiert werden. \\
+		\texttt{greyscale\_threshold} & Schwellenwert der Objekterkennung. \\
+		\texttt{greyscale} & \texttt{true} wenn ein Graustufen-Bild erzeugt werden soll. \\
+		\texttt{quality} & Ein Wert zwischen 0 und 100 für die Qualität des JPEG-Bildes. \\
+		\texttt{crop\_x} & Breite des Feldes das auf beiden Seiten des Bildes abgeschnitten wird. \\
+		\texttt{contrast} & Ein Wert zwischen -100 und 100 für den Kontrast der Kamera. \\
+	\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|l|l|}
+		\hline Anfrage an Raspberry Pi & Antwort von Raspberry Pi \\ 
+		\hline \texttt{GET /camera HTTP/1.1} & \texttt{200 OK} \\
+		\texttt{Host: <raspberrypi-ip>} & \texttt{Content-Type: text/json} \\
+		& \\
+		& \verb|{| \\
+		& \verb|"greyscaleThreshold": 9,| \\
+		& \verb|"cropX": 295,| \\
+		& \verb|"lineY": 800,| \\
+		& \verb|"lineH": 1,| \\
+		& \verb|"greyscale": false,| \\
+		& \verb|"image": "/static/detected.jpg",| \\
+		& \verb|"quality": 19,| \\
+		& \verb|"contrast": 10| \\
+		& \verb|}| \\
+		\hline 
+	\end{tabular} 
+	\caption{\texttt{GET /camera}}
+	\label{tab:get-camera}
+\end{table}
+
+\newpage
+
+\paragraph{\texttt{PUT /camera}}
+
+Diese Anfrage verändert die Einstellungen der Bilderkennung.
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|l|l|}
+		\hline Anfrage an Raspberry Pi & Antwort von Raspberry Pi \\ 
+		\hline \texttt{PUT /camera HTTP/1.1} & \texttt{200 OK} \\
+		\texttt{Host: <raspberrypi-ip>} & \texttt{Content-Type: text/plain} \\
+		\texttt{Content-Type: text/json} & \\
+		& \\
+		\verb|{| & \verb|Im Fehlerfall:| \\
+		\verb|"greyscaleThreshold": 9,| & \\
+		\verb|"cropX": 295,| & \verb|406 NOT ACCEPTABLE| \\
+		\verb|"lineY": 800,| & \verb|Content-Type: text/json| \\
+		\verb|"lineH": 1,| & \\
+		\verb|"greyscale": false,| & \\
+		\verb|"image": "/static/detected.jpg",| & \\
+		\verb|"quality": 19,| & \\
+		\verb|"contrast": 10| & \\
+		\verb|}| & \\
+		\hline 
+	\end{tabular} 
+	\caption{\texttt{PUT /camera}}
+	\label{tab:put-camera}
+\end{table}
+
+\paragraph{\texttt{POST /camera}}
+
+Diese Anfrage erzeugt ein neues Bild und lässt die Detektierung laufen. Es sind keine Parameter notwendig.
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|l|l|}
+		\hline Anfrage an Raspberry Pi & Antwort von Raspberry Pi \\ 
+		\hline \texttt{POST /camera HTTP/1.1} & \texttt{200 OK} \\
+		\texttt{Host: <raspberrypi-ip>} & \texttt{Content-Type: text/plain} \\
+		\hline 
+	\end{tabular} 
+	\caption{\texttt{POST /camera}}
+	\label{tab:post-camera}
+\end{table}
+
+\paragraph{\texttt{GET /logger}}
+
+Diese Anfrage liefert das Log-File des Server zurück.
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|l|l|}
+		\hline Anfrage an Raspberry Pi & Antwort von Raspberry Pi \\ 
+		\hline \texttt{GET /logger HTTP/1.1} & \texttt{200 OK} \\
+		\texttt{Host: <raspberrypi-ip>} & \texttt{Content-Type: text/plain} \\
+		& \\
+		& \verb|15.05.2015 15:16:33 INFO Starte Prozess| \\
+		& \verb|15.05.2015 15:16:34 INFO Richte Stepper aus| \\
+		& \verb|15.05.2015 15:16:39 INFO Starte BLDC| \\
+		& \verb|15.05.2015 15:16:59 INFO Ballnachschub starten| \\
+		& \verb|15.05.2015 15:18:02 INFO Prozess beendet| \\
+		\hline 
+	\end{tabular} 
+	\caption{\texttt{GET /logger}}
+	\label{tab:get-logger}
+\end{table}
+
+\newpage
+
+\paragraph{\texttt{POST /drive/bldc}}
+
+Für den BLDC gibt es drei Ressourcen:
+\begin{itemize}
+	\item \texttt{drive/bldc/start}
+	\item \texttt{drive/bldc/stop}
+	\item \texttt{drive/bldc/reset}
+\end{itemize}
+Für start braucht es die Drehzahl des Schwungrades in RPM\footnote{Rounds per Minute}. Die Drehzahl muss zwischen 4000 und 20000 liegen.
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|l|l|}
+		\hline Anfrage an Raspberry Pi & Antwort von Raspberry Pi \\ 
+		\hline \texttt{POST /drive/bldc/start HTTP/1.1} & \texttt{200 OK} \\
+		\texttt{Host: <raspberrypi-ip>} & \texttt{Content-Type: text/plain} \\
+		\texttt{Content-Type: text/json} & \\
+		& \\
+		\verb|{| & \\
+		\verb|"rpm": 5000| & \\
+		\verb|}|& \\
+		\hline 
+	\end{tabular} 
+	\caption{\texttt{POST /drive/bldc/start}}
+	\label{tab:post-drive-bldc-start}
+\end{table}
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|l|l|}
+		\hline Anfrage an Raspberry Pi & Antwort von Raspberry Pi \\ 
+		\hline \texttt{POST /drive/bldc/stop HTTP/1.1} & \texttt{200 OK} \\
+		\texttt{Host: <raspberrypi-ip>} & \texttt{Content-Type: text/plain} \\
+		\hline 
+	\end{tabular} 
+	\caption{\texttt{POST /drive/bldc/stop}}
+	\label{tab:post-drive-bldc-stop}
+\end{table}
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|l|l|}
+		\hline Anfrage an Raspberry Pi & Antwort von Raspberry Pi \\ 
+		\hline \texttt{POST /drive/bldc/reset HTTP/1.1} & \texttt{200 OK} \\
+		\texttt{Host: <raspberrypi-ip>} & \texttt{Content-Type: text/plain} \\
+		\hline 
+	\end{tabular} 
+	\caption{\texttt{POST /drive/bldc/reset}}
+	\label{tab:post-drive-bldc-reset}
+\end{table}
+
+\paragraph{\texttt{POST /drive/dc}}
+
+Für den DC gibt es vier Ressourcen: 
+\begin{itemize}
+	\item \texttt{drive/dc/forward}
+	\item \texttt{drive/cd/backward}
+	\item \texttt{drive/dc/stop}
+	\item \texttt{drive/dc/reset}
+\end{itemize}
+Alle Anfragen verlangen keine Parameter und alle Antworten sind leer. Es wird nur die Anfrage \texttt{drive/dc/forward} dokumentiert. Die restlichen Anfragen sind gleich auszuführen.
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|l|l|}
+		\hline Anfrage an Raspberry Pi & Antwort von Raspberry Pi \\ 
+		\hline \texttt{POST /drive/dc/forward HTTP/1.1} & \texttt{200 OK} \\
+		\texttt{Host: <raspberrypi-ip>} & \texttt{Content-Type: text/plain} \\
+		\hline 
+	\end{tabular} 
+	\caption{\texttt{POST /drive/dc/forward}}
+	\label{tab:post-drive-dc-forward}
+\end{table}
+
+\paragraph{\texttt{POST /drive/stp}}
+
+Für den STP gibt es zwei Ressourcen: 
+\begin{itemize}
+	\item \texttt{drive/stp/start}
+	\item \texttt{drive/stp/reset}
+\end{itemize}
+Der Anfrage an die Ressource \texttt{drive/stp/start} muss die Anzahl der Schritte mitgeteilt werden, welche der Schrittmotor fahren muss. Die Anfrage an die Ressource \texttt{drive/stp/reset} hat keine Parameter. Die Antwort aller Anfragen ist leer.
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|l|l|}
+		\hline Anfrage an Raspberry Pi & Antwort von Raspberry Pi \\ 
+		\hline \texttt{POST /drive/stp/start HTTP/1.1} & \texttt{200 OK} \\
+		\texttt{Host: <raspberrypi-ip>} & \texttt{Content-Type: text/plain} \\
+		\texttt{Content-Type: text/json} & \\
+		& \\
+		\verb|{| & \\
+		\verb|"steps": 1000| & \\
+		\verb|}|& \\
+		\hline 
+	\end{tabular} 
+	\caption{\texttt{POST /drive/stp/start}}
+	\label{tab:post-drive-stp-start}
+\end{table}
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|l|l|}
+		\hline Anfrage an Raspberry Pi & Antwort von Raspberry Pi \\ 
+		\hline \texttt{POST /drive/stp/reset HTTP/1.1} & \texttt{200 OK} \\
+		\texttt{Host: <raspberrypi-ip>} & \texttt{Content-Type: text/plain} \\
+		\hline 
+	\end{tabular} 
+	\caption{\texttt{POST /drive/stp/reset}}
+	\label{tab:post-drive-stp-reset}
+\end{table}
+
+\paragraph{\texttt{PUT /start}}
+
+Diese Anfrage startet den Wurf-Vorgang und ist blockierend. Es müssen keine Parameter übergeben werden.
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|l|l|}
+		\hline Anfrage an Raspberry Pi & Antwort von Raspberry Pi \\ 
+		\hline \texttt{PUT /start HTTP/1.1} & \texttt{200 OK} \\
+		\texttt{Host: <raspberrypi-ip>} & \texttt{Content-Type: text/plain} \\
+		\hline 
+	\end{tabular} 
+	\caption{\texttt{PUT /start}}
+	\label{tab:put-start}
+\end{table}
 
