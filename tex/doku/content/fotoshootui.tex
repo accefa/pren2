@@ -1,40 +1,53 @@
 \subsubsection{Fotoshoot UI}
 
-Das Fotoshoot UI hat mehrere Funktionen. Es dient um den Ballwurf-Prozess zu starten, die Korberkennung zu kalibrieren und die Motoren anzusteuern.
+Das Fotoshoot UI hat mehrere Funktionen. Es dient um den Ballwurf-Prozess zu starten, die Korberkennung zu kalibrieren und die Motoren anzusteuern.\\
 
 \noindent
-\textbf{Ballwurf-Prozess}
+\textbf{Starten des Ballwurfs (Komponente Sequence)}
 Der gesamte Prozess kann mittels Start-Knopf gestartet werden. Die Benutzeroberfläche wird eingefroren und die Stoppuhr gestartet. Sobald der Prozess beendet wurde, wird die vergangene Zeit angezeigt.
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.7\linewidth]{../../fig/fotoshoot-ui/fotoshoot-ui-pi}
+\includegraphics[width=0.6\linewidth]{../../fig/fotoshoot-ui/fotoshoot-ui-pi}
 \caption{Fotoshoot-UI Prozess starten}
 \label{fig:fotoshoot-ui-pi}
 \end{figure}
 
 \noindent
-\textbf{Kalibrierung der Korberkennung}
-In diesem Bereich können die Parameter für die Bild-Erkennung definiert werden. Die Bedeutung der Parameter sowie die gültigen Werte sind in dem Abschnitt \ref{sec:parameter-bild-erkennung} detailliert beschrieben.
+\textbf{Kalibrierung der Bildverarbeitung (Komponente Image)}
+In diesem Bereich können die Parameter für die Bild-Erkennung definiert werden. Die Bedeutung der Parameter sowie die gültigen Werte sind in dem Abschnitt \ref{sec:parameter-bild-erkennung} detailliert beschrieben. Im unteren Abschnitt dieses Tab kann das Bild angezeigt werden. Auf dem Bild ist der erkannte Korb mit einem Fadenkreuz markiert.
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{../../fig/fotoshoot-ui/fotoshoot-ui-korb-erkennung}
+	\includegraphics[width=0.6\linewidth]{../../fig/fotoshoot-ui/fotoshoot-ui-korb-erkennung}
 	\caption{Fotoshoot-UI Bilderkennung}
 	\label{fig:fotoshoot-ui-korb-erkennung}
 \end{figure}
 
+\newpage
 \noindent
-\textbf{Ansteuerung der Motoren}
+\textbf{Ansteuerung der Motoren (Komponente Drive)}
 Die einzelnen Motoren können über die Benutzeroberfläche angesteuert werden. Dies vereinfacht das Testen der einzelnen Komponenten massiv und macht es auch für alle zugänglich. Es braucht nun kein spezielles IT-Know-How mehr um die einzelnen Komponenten zu starten.
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{../../fig/fotoshoot-ui/fotoshoot-ui-motoren}
+	\includegraphics[width=0.6\linewidth]{../../fig/fotoshoot-ui/fotoshoot-ui-motoren}
 	\caption{Fotoshoot-UI Ansteuerung der Motoren}
 	\label{fig:fotoshoot-ui-motoren}
 \end{figure}
 
+\noindent
+\textbf{Log (Komponente Logger)}
+Während des Ballwurfs werden Log-Einträge erstellt. Die Logger-Komponete kann diese Abfragen und bringt diese auf dem Tab Log zur Darstellung.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{../../fig/fotoshoot-ui/fotoshoot-ui-log}
+	\caption{Fotoshoot-UI Log Einträge}
+	\label{fig:fotoshoot-ui-log}
+\end{figure}
+
+\newpage
 \noindent
 \textbf{Technische Umsetzung}
 Das Fotoshoot-UI wurde in Java und mit der heute aktuellen UI-Technologie Java-FX implementiert. Zudem sind zentral zwei 3rd-Parties, welches den Bau dieser Applikation massiv vereinfachen soll.
@@ -46,7 +59,7 @@ Das Fotoshoot-UI wurde in Java und mit der heute aktuellen UI-Technologie Java-F
 	
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{../../fig/fotoshoot-ui/fotoshoot-ui-paketdiagramm}
+	\includegraphics[width=0.4\linewidth]{../../fig/fotoshoot-ui/fotoshoot-ui-paketdiagramm}
 	\caption{Paketdiagram Fotoshoot-UI}
 	\label{fig:fotoshoot-ui-paketdiagramm}
 \end{figure}
