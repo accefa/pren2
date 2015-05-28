@@ -1,5 +1,5 @@
 \subsection{Testplan-Elektrotechnik}
-\subsubsection{Kommunikation PC -- Shell auf Freedomboard kann von PC bedient werden}
+\subsubsection{KOM101 Kommunikation mit PC}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular}{|r|p{14cm}|}
@@ -27,7 +27,7 @@
 \end{table}
 
 \newpage
-\subsubsection{Kommunikation RaspberryPi -- Freedomboard von RaspberryPi bedienbar}
+\subsubsection{KOM102 Kommunikation mit RaspberryPi}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular}{|r|p{14cm}|}
@@ -48,7 +48,7 @@
 \end{table}
 
 \newpage
-\subsubsection{Ballabwurf -- BLDC Motor kann per Freedomboard bedient werden}
+\subsubsection{MOT101 Ballabwurf mit BLDC Motor}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular}{|r|p{14cm}|}
@@ -74,34 +74,7 @@
 \end{table}
 
 \newpage
-\subsubsection{Positionsschalter -- Fixpositionen können per Software erkannt werden}
-\begin{table}[h!]
-	\renewcommand{\arraystretch}{1.5}
-	\begin{tabular}{|r|p{14cm}|}
-		\hline Beschreibung	&
-			Software kann auf erreichen von Fixpositionen reagieren. \\ 
-		\hline Vorbedingungen	&
-			Shell ist auf dem Freedomboard implementiert.
-			Positionsschalter implementiert. \\ 
-		\hline Testdaten	& - \\ 
-		\hline Vorgehen		& 
-		\begin{enumerate}
-			\item Freedomboard verbinden
-			\item Verbindung aufbauen zum Freedomboard
-			\item Positionserkennung triggern
-			\item LED auf Freedomboard betachten
-			\item Positionstriggerung quittieren
-			\item Freedomboard trennen
-		\end{enumerate} \\ 
-		\hline Ergebnis 	&
-			Die LED auf dem Freedomboard reagiert auf die
-			Positionstriggerung und kann per Shell quittiert werden.\\ 
-		\hline 
-	\end{tabular}
-\end{table}
-
-\newpage
-\subsubsection{Ballnachschub -- DC Motor kann per Freedomboard bedient werden}
+\subsubsection{MOT102 Ballnachschub mit DC Motor}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular}{|r|p{14cm}|}
@@ -143,7 +116,7 @@
 \end{table}
 
 \newpage
-\subsubsection{Turmausrichtung -- Schrittmotor kann per Freedomboard bedient werden}
+\subsubsection{MOT103 Turmausrichtung mit Schrittmotor}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular}{|r|p{14cm}|}
@@ -174,7 +147,7 @@
 \end{table}
 
 \newpage
-\subsubsection{Leistungsspeisung -- System kann per Servernetzteil gespiesen werden}
+\subsubsection{POW101 Leistungsspeisung per Server-Netzteil}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular}{|r|p{14cm}|}
@@ -204,4 +177,32 @@
 		\hline 
 	\end{tabular}
 \end{table}
+
+\newpage
+\subsubsection{SEN101 Positionsschalter}
+\begin{table}[h!]
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{|r|p{14cm}|}
+		\hline Beschreibung	&
+			Software kann auf erreichen von Fixpositionen reagieren. \\ 
+		\hline Vorbedingungen	&
+			Shell ist auf dem Freedomboard implementiert.
+			Positionsschalter implementiert. \\ 
+		\hline Testdaten	& - \\ 
+		\hline Vorgehen		& 
+		\begin{enumerate}
+			\item Freedomboard verbinden
+			\item Verbindung aufbauen zum Freedomboard
+			\item Positionserkennung triggern
+			\item LED auf Freedomboard betachten
+			\item Positionstriggerung quittieren
+			\item Freedomboard trennen
+		\end{enumerate} \\ 
+		\hline Ergebnis 	&
+			Die LED auf dem Freedomboard reagiert auf die
+			Positionstriggerung und kann per Shell quittiert werden.\\ 
+		\hline 
+	\end{tabular}
+\end{table}
+
 
