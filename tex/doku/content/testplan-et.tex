@@ -173,3 +173,35 @@
 	\end{tabular}
 \end{table}
 
+\newpage
+\subsubsection{Leistungsspeisung -- System kann per Servernetzteil gespiesen werden}
+\begin{table}[h!]
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{|r|p{14cm}|}
+		\hline Beschreibung	&
+			Die 12 Volt Speisung kann per Servernetzteil versorgt werden. \\ 
+		\hline Vorbedingungen	&
+			Maschine ist komplettiert und alle Leistungskomponenten
+			sind einsatzbereit. \\ 
+		\hline Testdaten	& - \\ 
+		\hline Vorgehen		& 
+		\begin{enumerate}
+			\item Freedomboard verbinden
+			\item Verbindung aufbauen zum Freedomboard
+			\item Motorspeisung einschalten
+			\item DC Motor runterfahren zum unteren Endschalter
+			\item 5 Tennisbälle einführen
+			\item Turm ausrichten an linken Anschlag
+			\item BLDC Motor starten auf 75\% der Maximaldrehzahl
+			\item DC Motor einschalten und auf oberen Anschlag fahren lassen
+			\item Turm ausrichten an rechten Anschlag
+			\item BLDC ausschalten
+			\item Freedomboard trennen
+		\end{enumerate} \\ 
+		\hline Ergebnis 	&
+			Die Nennspannung von 12 Volt weicht während dem gesamten
+			Prozess um maximal $\pm10$\% ab. \\ 
+		\hline 
+	\end{tabular}
+\end{table}
+
