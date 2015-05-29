@@ -2,9 +2,15 @@
 In diesem Repository findest du alle relevanten Inhalte der Dokumentation.
 
 ## Termine
-- Dokumentation (Montag‚ 15. Juni 2015, 12.00 Uhr, E309 zwei Exemplare gebunden (Hauptteil), Anhang auf CD (1x), beides auf ILIAS als .pdf)
-- Poster (Montag, 29. Juni 2015, 16.00 Uhr, auf ILIAS als poster.pdf)
-- Schlusspräsentation (Dienstag, 30. Juni 2015, 16.00 Uhr, auf ILIAS als präsentation.ppt)
+
+## Montag‚ 15. Juni 2015, 12.00 Uhr
+- Dokumentation (E309 zwei Exemplare gebunden (Hauptteil), Anhang auf CD (1x), beides auf ILIAS als .pdf)
+
+## Montag, 29. Juni 2015, 16.00 Uhr
+- Poster (auf ILIAS als poster.pdf)
+
+## Dienstag, 30. Juni 2015, 16.00 Uhr
+- Schlusspräsentation (auf ILIAS als präsentation.ppt)
 
 ## Organisation
 Das Repository ist straff organisert.
