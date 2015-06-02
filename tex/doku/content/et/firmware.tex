@@ -1,1 +1,18 @@
 \subsubsection{Firmware}
+Die Firmware des Freedomboard ist in C geschrieben und mit der
+Entwicklungsumgebung Kinetis Design Studio des Herstellers
+Freescale erstellt. Die Firmware beinhaltet die Implementierung
+des Echtzeitbetriebssystems FreeRTOS und die darauf als Task
+laufende Shell. Nebst diesem Task gibt es einen weiteren Task,
+welcher den Duty-Cycle des PWM-Signal stellt für den BLDC-Motor.
+Diese Update-Funktion ist als Task implementiert, da die
+Möglichkeit offen ist eine Regelung einzusetzen die den Stellwert
+setzt unabhängig von der Shell. Die übrigen Komponenten der
+Firmware, wie die Bedienung des DC-Motors und des Schrittmotors
+sind als einfache ausführbare Teilprogramme implementiert, welche
+über die Shell bedient werden können. Die Shell selbst ist über
+die UART-Schnittstelle verfügbar und kann dank der
+USB-Seriell-Wandlung auch direkt an einen beliebigen PC verbunden
+und bedient werden.
+
+
