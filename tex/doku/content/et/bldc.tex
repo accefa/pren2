@@ -1,9 +1,9 @@
 \subsubsection{BLDC-Motor}
 Der Antrieb für den Ballabwurf ist realisiert mittels eines
-Brushless-Gleichstrommotors vom Modell A20-12XL EVO. Dieser wird
-mittels eines passenden kommerziellen Reglers vom Typ X-30 PRO
-betrieben. Der Regler wird gestellt durch die Firmware des
-Freedomboards, welche per UART bedient wird.
+Brushless-Gleichstrommotors vom Modell A20-12XL EVO von Hacker.
+Dieser wird mittels eines passenden kommerziellen Reglers vom
+Typ X-30 PRO betrieben. Der Regler wird gestellt durch die Firmware
+des Freedomboards, welche per UART bedient wird.
 
 Die zugehörige Software kann mittels des UART-Interfaces per
 Kommandozeile bedient werden mit dem Befehl \verb!BLDC! und den
@@ -28,5 +28,7 @@ zugehörigen Parametern. Die komplette Liste aller Befehle zu
 Da ein kommerzieller Regler verwendet wird aus dem Modellbau für
 Flugzeuge und Helikopter, kann lediglich ein Standard PWM-Signal
 aus dem Modellbau benutzt werden, um die Drehzahl des Motors zu
-stellen. Da dieser Regler eine echte Drehzahlregelung macht wird
-auf einen überlagerten Regler verzichtet.
+stellen. Da dieser Regler eine echte Drehzahlregelung implementiert
+wird auf einen überlagerten Regler auf dem Freedomboard verzichtet.
+Eine allfällige Parametierung kann mittels eines Programmieradapters
+X-PRO USB Controller V2 des Herstellers vorgenommen werden.
