@@ -1,7 +1,7 @@
-\subsection{Schnittstellen}
+\subsubsection{Schnittstelle Raspberry Pi und Freedomboard}
 In diesem Kapitel werden fachübergreifende Schnittstellen beschrieben.
 
-\subsubsection{Raspberry-PI und Freedom-Board}
+%\subsubsection{Raspberry-PI und Freedom-Board}
 \label{sec:schnittstelle-raspi-freedom}
 Die Elektrotechnik ist für die Informatik ein Service-Anbieter. Die
 Informatik konsumiert Dienstleistungen in Form der Motoren-Steuerung.
@@ -26,16 +26,22 @@ Bedeutung. \\
 	\begin{tabular}{l l l}
 		\textbf{CMD}	& \textbf{Parameter}	& \textbf{Beschreibung} \\
 		\hline
+		& & \\
 		\texttt{BLDC} 	& \texttt{on} 		& Schaltet den Motor/Relger ein für das Schwungrad	\\
-		\texttt{BLDC} 	& \texttt{setrpm 5000}	& Setzt das Schwungrad auf 25\% der Drehzahl	\\ 
-		\texttt{BLDC} 	& \texttt{off}		& Stoppt das Schwungrad		\\ 
-		\texttt{BLDC} 	& \texttt{reset}	& Setzt das Schwungrad zurück		\\ 
-		\texttt{DC}	& \texttt{forward}	& Startet den Ballnachschub forwärts	\\ 
-		\texttt{DC}	& \texttt{backward}	& Startet den Ballnachschub rückwärts	\\ 
-		\texttt{DC}	& \texttt{stop}		& Stoppt den Ballnachschub		\\ 
-		\texttt{DC} 	& \texttt{reset}	& Setzt den Ballnachschub zurück	\\ 
-		\texttt{STP} 	& \texttt{start 400}	& Richtet den Turm 400 Schritte nach rechts aus \\ 
-		\texttt{STP}	& \texttt{reset}	& Setzt den Turm an seinen Ausgangspunkt zurück \\ 
+		\texttt{BLDC} 	& \texttt{off}		& Stoppt das Schwungrad					\\ 
+		\texttt{BLDC} 	& \texttt{reset}	& Setzt das Schwungrad zurück				\\ 
+		\texttt{BLDC} 	& \texttt{setrpm 5000}	& Setzt das Schwungrad auf 25\% der Drehzahl		\\ 
+		& & \\
+		\texttt{DC}	& \texttt{on}		& Startet den Ballnachschub				\\
+		\texttt{DC}	& \texttt{off}		& Stoppt den Ballnachschub				\\ 
+		\texttt{DC} 	& \texttt{reset}	& Setzt den Ballnachschub zurück			\\ 
+		\texttt{DC}	& \texttt{up}		& Stellt den Ballnachschub in Vorwärtsrichtung		\\ 
+		\texttt{DC}	& \texttt{down}		& Stellt den Ballnachschub in Rückwärtsrichtung		\\
+		& & \\
+		\texttt{STP} 	& \texttt{on}		& Schaltet den Schrittmotor ein 			\\ 
+		\texttt{STP} 	& \texttt{off}		& Schaltet den Schrittmotor aus 			\\ 
+		\texttt{STP}	& \texttt{reset}	& Setzt den Turm an seinen Ausgangspunkt zurück 	\\ 
+		\texttt{STP} 	& \texttt{move 400}	& Richtet den Turm 400 Schritte nach rechts aus 	\\ 
 	\end{tabular} 
 	\caption{Konsolen-Befehle des Freedom Boards}
 	\label{tab:freedom-board-konsolen-befehle}
