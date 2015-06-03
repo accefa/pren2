@@ -7,11 +7,11 @@ Der Webserver wurde mit Hilfe der Python-Bibliothek \texttt{web.py} erstellt. Di
 \\
 \\
 \textbf{Komponente Detection}
-Um den Korb zu erkennen wird ein Foto geschossen und ein Algorithmus erkennt die Position des Korbes. Der Algorithmus wurde selbst entwickelt und in Python implementiert. Abbildung \ref{fig:ablauf-ortung-des-korbes-algorithmus} zeigt den grundsätzlichen Ablauf des Algorithmus.
+Um den Korb zu erkennen wird ein Foto geschossen und ein Algorithmus erkennt die Position des Korbes. Der Algorithmus wurde selbst entwickelt und in Python implementiert. Abbildung \ref{fig:ablauf-ortung-des-korbes-algorithmus} zeigt den grundsätzlichen Ablauf des Algorithmus. Schritt eins bis vier dienen als Vorbereitung für den Schritt fünf. Im Schritt fünf werden mehrere Pixel-Linien analysiert. Es wird der Bereich als Korb erkannt, welcher am längsten eine dunkle Stelle aufweist. Dieser dunklen Stelle liegt ein konfigurierbare Schwellwert zu Grunde.
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{../../fig/ablauf-ortung-des-korbes-algorithmus}
+	\includegraphics[width=0.8\linewidth]{../../fig/algorithmus-korb-erkennung.png}
 	\caption{Ablauf Erkennung des Korbes}
 	\label{fig:ablauf-ortung-des-korbes-algorithmus}
 \end{figure}
