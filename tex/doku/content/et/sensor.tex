@@ -1,7 +1,7 @@
 \subsubsection{Endschalter}
 Für den Ballvorschub sind elektronische und kontaktlose Endschalter
-eingesetzt, welche das Erreichen der Endposition erkennen für den
-Ballvorschub. Dies dient dazu, den Motor vor Überbeanspruchung zu schützen. 
+eingesetzt, welche das Erreichen der Endposition erkennen. 
+Dies dient dazu, den Motor vor Überbeanspruchung zu schützen. 
 
 Für diese Funktion sind magnetisch getriggerte Hall-Effekt-Schalter
 eingesetzt vom Typ AH180N von Diodes Incorporated. Hierzu sind eigens
@@ -26,20 +26,20 @@ Die Hall-Effekt-Schalter werden mit der vom Freedomboard zur Verfügung
 gestellten 3.3 Volt Speisung betrieben. Da die Ausgangsstufe des Sensors
 als Open-Collector implementiert ist, kann so das 3.3 Volt Signal direkt
 auf das Freedomboard zurückgeführt und verarbeitet werden. 
-%
+
 Die Signale der Endschalter sind als Interruptquellen in der Firmware des
 Freedomboard implementiert und reagieren auf fallende Signalflanken. Da
 der Hall-Effekt-Schalter eine Hysterese besitzt, gibt es ein sauberes
 Signal an den Eingängen ohne Prellen.
-%
+
 Die Firmware bindet die Interrupts direkt an den Ballvorschub in der Weise,
 dass der Motor unverzüglich abgestellt wird und präventiv die Drehrichtung
 geändert wird. Die Änderung der Drehrichtung richtet sich nach dem
 aktivierten Sensor. So wird die Drehrichtung auf Abwärts gestellt
 falls der obere Endschalter ausschlägt und umgekehrt beim unteren.
-%
-Die Zustände der Endschalter können über die Statusanzeige vom DC-Motor
-eingesehen werden auf der Kommandozeile. Die Quittierung der Sensoren
+
+Die Zustände der Endschalter können auf der Kommandozeile über die Statusanzeige vom DC-Motor
+eingesehen werden. Die Quittierung der Sensoren
 erfolgt per Einschalten des DC-Motors.
 
 Die Firmware auf dem Freedomboard bietet noch zwei Besonderheiten im

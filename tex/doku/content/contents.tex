@@ -1,9 +1,12 @@
-\input{content/title}		% Titelseite
-\newpage
-\tableofcontents		% Inhaltsverzeichnis
+% Titelseite
+\input{content/title}
 \newpage
 
-%Beschreibung des Lösungskonzepts
+% Inhaltsverzeichnis
+\tableofcontents		
+\newpage
+
+% Beschreibung des Lösungskonzepts
 \input{content/management-summary}
 \newpage
 \input{content/einleitung}
@@ -15,7 +18,7 @@
 \input{content/schluss}
 \newpage
 
-%Anhang
+% Anhang
 \appendix
 \input{content/aufgabenstellung}
 \newpage
@@ -31,7 +34,8 @@
 \newpage
 \input{content/dc_doc}
 
+% Abbildungsverzechnis
+\listoffigures
 
-\begin{multicols}{2}
-	\printglossary[title=Glossar,toctitle=Terms and abbreviations]
-\end{multicols}
+% Tabellenverzechnis
+\listoftables

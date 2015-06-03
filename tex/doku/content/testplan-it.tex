@@ -15,7 +15,7 @@ BLDC ist der Motor für das Schwungrad, DC für den Ballvorschub und STP zum Dre
 \subsubsection{INT101 Webservice Erreichbarkeit}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
-	\begin{tabular}{|r|p{14cm}|}
+	\begin{tabular}{|r|p{13cm}|}
 		\hline Beschreibung & Die Webservices auf dem Controller müssen erreichbar sein. \\ 
 		\hline Vorbedingungen & Controller Setup \\ 
 		\hline Testdaten & URL: http://IP-ADDRESS-CONTROLLER:PORT-CONTROLLER \\ 
@@ -31,7 +31,7 @@ BLDC ist der Motor für das Schwungrad, DC für den Ballvorschub und STP zum Dre
 \subsubsection{INT102 Webservice Bild laden}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
-	\begin{tabular}{|r|p{14cm}|}
+	\begin{tabular}{|r|p{13cm}|}
 		\hline Beschreibung & Der Bild-Lade Webservice muss ein Bild zurückliefern. \\ 
 		\hline Vorbedingungen & INT101 \\ 
 		\hline Testdaten & URL: http://IP-ADDRESS-CONTROLLER:PORT-CONTROLLER/image \\ 
@@ -48,7 +48,7 @@ BLDC ist der Motor für das Schwungrad, DC für den Ballvorschub und STP zum Dre
 \subsubsection{INT103 Webservice Kamera Konfig laden}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
-	\begin{tabular}{|r|p{14cm}|}
+	\begin{tabular}{|r|p{13cm}|}
 		\hline Beschreibung & Der Kamera-Konfig-Lade Webservice muss ein JSON-File mit den aktuellen Einstellungen liefern. \\ 
 		\hline Vorbedingungen & INT102 \\ 
 		\hline Testdaten & URL: http://IP-ADDRESS-CONTROLLER:PORT-CONTROLLER/camera \\ 
@@ -64,7 +64,7 @@ BLDC ist der Motor für das Schwungrad, DC für den Ballvorschub und STP zum Dre
 \subsubsection{INT104 Webservice Kamera Konfig speichern}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
-	\begin{tabular}{|r|p{14cm}|}
+	\begin{tabular}{|r|p{13cm}|}
 		\hline Beschreibung & Der Kamera-Konfig-Speicher Webservice muss ein JSON-File entgegennehmen und die Einstellungen speichern. \\ 
 		\hline Vorbedingungen & INT103 \\ 
 		\hline Testdaten & URL: http://IP-ADDRESS-CONTROLLER:PORT-CONTROLLER/camera \\ 
@@ -86,7 +86,7 @@ BLDC ist der Motor für das Schwungrad, DC für den Ballvorschub und STP zum Dre
 \subsubsection{SYS101 Configurator startet}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
-	\begin{tabular}{|r|p{14cm}|}
+	\begin{tabular}{|r|p{13cm}|}
 		\hline Beschreibung & Der Configurator lässt sich starten. \\ 
 		\hline Vorbedingungen & Configurator Setup \\ 
 		\hline Testdaten &  \\ 
@@ -102,7 +102,7 @@ BLDC ist der Motor für das Schwungrad, DC für den Ballvorschub und STP zum Dre
 \subsubsection{SYS102 Configurator Verbindungseinstellungen }
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
-	\begin{tabular}{|r|p{14cm}|}
+	\begin{tabular}{|r|p{13cm}|}
 		\hline Beschreibung & Im Configurator lassen sich die Verbindungseinstellungen zum Controller ändern. \\ 
 		\hline Vorbedingungen & SYS101 \\ 
 		\hline Testdaten & Eigene Verbindungsdaten definieren \\ 
@@ -120,7 +120,7 @@ BLDC ist der Motor für das Schwungrad, DC für den Ballvorschub und STP zum Dre
 \subsubsection{SYS103 Configurator Bild laden }
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
-	\begin{tabular}{|r|p{14cm}|}
+	\begin{tabular}{|r|p{13cm}|}
 		\hline Beschreibung & Aktuelle Foto lässt sich laden und im Configurator anzeigen. \\ 
 		\hline Vorbedingungen & SYS102 \\ 
 		\hline Testdaten & Verbindungsdaten definieren, Bild \\ 
@@ -138,7 +138,7 @@ BLDC ist der Motor für das Schwungrad, DC für den Ballvorschub und STP zum Dre
 \subsubsection{SYS104 Configurator Bild Konfiguration anwenden }
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
-	\begin{tabular}{|r|p{14cm}|}
+	\begin{tabular}{|r|p{13cm}|}
 		\hline Beschreibung & Die Kamera-Einstellungen lassen sich editieren und auf den Controller anwenden. \\ 
 		\hline Vorbedingungen & SYS103 \\ 
 		\hline Testdaten & Konfigurationsdaten \\ 
@@ -158,7 +158,7 @@ BLDC ist der Motor für das Schwungrad, DC für den Ballvorschub und STP zum Dre
 \subsubsection{SYS105 BLDC ansteuern}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
-	\begin{tabular}{|r|p{14cm}|}
+	\begin{tabular}{|r|p{13cm}|}
 		\hline Beschreibung & Der BLDC Motor lässt sich via GUI ansteuern. \\ 
 		\hline Vorbedingungen & SYS102 \\ 
 		\hline Testdaten & Konfigurationsdaten \\ 
@@ -179,7 +179,7 @@ BLDC ist der Motor für das Schwungrad, DC für den Ballvorschub und STP zum Dre
 \subsubsection{SYS106 DC ansteuern }
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
-	\begin{tabular}{|r|p{14cm}|}
+	\begin{tabular}{|r|p{13cm}|}
 		\hline Beschreibung & Der DC Motor lässt sich via GUI ansteuern. \\ 
 		\hline Vorbedingungen & SYS102 \\ 
 		\hline Testdaten & Konfigurationsdaten \\ 
@@ -198,7 +198,7 @@ BLDC ist der Motor für das Schwungrad, DC für den Ballvorschub und STP zum Dre
 \subsubsection{SYS107 STP ansteuern}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
-	\begin{tabular}{|r|p{14cm}|}
+	\begin{tabular}{|r|p{13cm}|}
 		\hline Beschreibung & Der DC Motor lässt sich via GUI ansteuern. \\ 
 		\hline Vorbedingungen & SYS102 \\ 
 		\hline Testdaten & Konfigurationsdaten \\ 

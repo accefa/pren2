@@ -1,0 +1,16 @@
+\select@language {ngerman}
+\contentsline {table}{\numberline {1}{\ignorespaces Berechnung Anzahl Schritte f\IeC {\"u}r den Schrittmotor\relax }}{20}{table.caption.38}
+\contentsline {table}{\numberline {2}{\ignorespaces \texttt {GET /camera}\relax }}{21}{table.caption.45}
+\contentsline {table}{\numberline {3}{\ignorespaces \texttt {PUT /camera}\relax }}{22}{table.caption.47}
+\contentsline {table}{\numberline {4}{\ignorespaces \texttt {POST /camera}\relax }}{22}{table.caption.49}
+\contentsline {table}{\numberline {5}{\ignorespaces \texttt {GET /logger}\relax }}{22}{table.caption.51}
+\contentsline {table}{\numberline {6}{\ignorespaces \texttt {POST /drive/bldc/start}\relax }}{23}{table.caption.53}
+\contentsline {table}{\numberline {7}{\ignorespaces \texttt {POST /drive/bldc/stop}\relax }}{23}{table.caption.54}
+\contentsline {table}{\numberline {8}{\ignorespaces \texttt {POST /drive/bldc/reset}\relax }}{23}{table.caption.55}
+\contentsline {table}{\numberline {9}{\ignorespaces \texttt {POST /drive/dc/forward}\relax }}{24}{table.caption.57}
+\contentsline {table}{\numberline {10}{\ignorespaces \texttt {POST /drive/stp/start}\relax }}{24}{table.caption.59}
+\contentsline {table}{\numberline {11}{\ignorespaces \texttt {POST /drive/stp/reset}\relax }}{24}{table.caption.60}
+\contentsline {table}{\numberline {12}{\ignorespaces \texttt {PUT /start}\relax }}{24}{table.caption.62}
+\contentsline {table}{\numberline {13}{\ignorespaces Konsolen-Befehle des Freedom Boards\relax }}{33}{table.caption.71}
+\contentsline {table}{\numberline {14}{\ignorespaces Risikoreferenz\relax }}{38}{table.caption.76}
+\contentsline {table}{\numberline {15}{\ignorespaces Risikomanagement\relax }}{39}{table.caption.77}
