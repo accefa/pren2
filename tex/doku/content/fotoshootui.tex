@@ -38,7 +38,7 @@ Die einzelnen Motoren können über die Benutzeroberfläche angesteuert werden. 
 
 \noindent
 \textbf{Log (Komponente Logger)}
-Während des Ballwurfs werden Log-Einträge erstellt. Die Logger-Komponete kann diese Abfragen und bringt diese auf dem Tab Log zur Darstellung.
+Während des Ballwurfs werden Log-Einträge erstellt. Die Logger-Komponente kann diese abfragen und bringt diese auf dem Tab Log zur Darstellung.
 
 \begin{figure}[h!]
 	\centering
@@ -73,4 +73,4 @@ Auf der Abbildung \ref{fig:fotoshoot-ui-paketdiagramm} ist zu erkennen wie die A
 	\item Events: Das sind POJOs, welche von den Controller verwendet werden. Diese werden für die Kommunikation der Controller untereinander über den Eventbus benötigt.
 \end{itemize}
 			
-Jeder Controller kann der Ursprung für eine Benutzeraktion sein, welcher Einfluss auf irgendwelche Views hat. Diesen Views liegen auch wieder Controllers zugrunde. Damit nicht jeder Controller jeden anderen Controller kennen muss, verwenden wir hier den EventBus von Google. Jeder Controller wird automatisch registriert und kann über den Eventbus Events senden und sich für jedes Event auch wieder registrieren.
+Jeder Controller kann der Ursprung für eine Benutzeraktion sein, welcher Einfluss auf irgendwelche Views hat. Diesen Views liegen auch Controller zugrunde. Damit nicht jeder Controller jeden anderen Controller kennen muss, verwenden wir hier den EventBus von Google. Jeder Controller wird automatisch registriert und kann über den EventBus Events senden und sich für jedes Event auch wieder registrieren.
