@@ -18,7 +18,7 @@ etstellte Platinen der PREN-ET Subgruppe DC im Einsatz.
 	\end{subfigure}
 	\begin{subfigure}[b]{0.45\textwidth}
 		\centering
-		%\includegraphics[width=1\textwidth]{../../fig/et/}
+		\includegraphics[width=1\textwidth]{../../fig/et/sensor_pcb.png}
 		\caption{Endschalter-Platine}
 	\end{subfigure}
 	\caption{Endschalter für den Ballvorschub}
@@ -28,18 +28,18 @@ Die Hall-Effekt-Schalter werden mit der vom Freedomboard zur Verfügung
 gestellten 3.3 Volt Speisung betrieben. Da die Ausgangsstufe des Sensors
 als Open-Collector implementiert ist, kann so das 3.3 Volt Signal direkt
 auf das Freedomboard zurückgeführt und verarbeitet werden. 
-
+%
 Die Signale der Endschalter sind als Interruptquellen in der Firmware des
 Freedomboard implementiert und reagieren auf fallende Signalflanken. Da
 der Hall-Effekt-Schalter eine Hysterese besitzt, gibt es ein sauberes
 Signal an den Eingängen ohne Prellen.
-
+%
 Die Firmware bindet die Interrupts direkt an den Ballvorschub in der Weise,
 dass der Motor unverzüglich abgestellt wird und präventiv die Drehrichtung
 geändert wird. Die Änderung der Drehrichtung richtet sich nach dem
 aktivierten Sensor. So wird die Drehrichtung auf Abwärts gestellt
 falls der obere Endschalter ausschlägt und umgekehrt beim unteren.
-
+%
 Die Zustände der Endschalter können über die Statusanzeige vom DC-Motor
 eingesehen werden auf der Kommandozeile. Die Quittierung der Sensoren
 erfolgt per Einschalten des DC-Motors.
