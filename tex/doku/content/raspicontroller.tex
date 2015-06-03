@@ -19,6 +19,7 @@ Um den Korb zu erkennen wird ein Foto geschossen und ein Algorithmus erkennt die
 \newpage
 Sobald klar ist wo der Korb im Bild steht, werden die Pixel-Koordinaten zu Anzahl Schritte für den Schrittmotor umgerechnet. In der Tabelle \ref{tab:berechnung-steps} ist die Berechnung ersichtlich. 
 
+\label{tab:berechnung-steps}
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{1.5}
 	\centering
@@ -36,7 +37,6 @@ Sobald klar ist wo der Korb im Bild steht, werden die Pixel-Koordinaten zu Anzah
 		Winkel & $\alpha = arctan\frac{k}{a}$ rad \\
 		Anzahl Schritte & $\frac{\alpha}{w}$ \\
 	\end{tabular}
-	\label{tab:berechnung-steps}
 	\caption{Berechnung Anzahl Schritte für den Schrittmotor}
 \end{table}
 
