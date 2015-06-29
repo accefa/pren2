@@ -1,6 +1,28 @@
 # Willkommen auf dem PREN2 Repository des Team 39
 In diesem Repository findest du alle relevanten Inhalte der Dokumentation.
 
+## Ablauf Vorführung
+
+### Vor den 5 Minuten
+- Ballvorschub zurückschrauben
+- Notebook starten, Fotoshoot-UI bereit
+
+### In den 5 Minuten
+- Stromversorgung
+
+- Maschine in der Mitte installieren
+- Turm genau in die Mitte ausrichten
+- Bälle einfüllen 
+
+- Ins WLAN connecten
+- PREN Service beenden
+- PREN Service starten (DEBUG Modus)
+
+- BLDC aus UI manuell starten
+
+- Foto schiessen und Parameter kalibrieren
+
+
 ## Termine
 
 ## Montag‚ 15. Juni 2015, 12.00 Uhr
